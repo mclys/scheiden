@@ -352,6 +352,36 @@ svg g.sbtn:focus-visible .blk{stroke-width:4}
 }
 @media (min-width:701px){.bar .sub{display:none}}
 
+
+/* ===== stijl voor 17-jarigen: stevig, speels, nog steeds rustig ===== */
+:root{--r:18px;--s1:var(--accent);--s2:var(--c-flame);--s3:var(--good);--shadow:0 1px 0 var(--line),0 12px 28px -20px rgba(20,35,44,.45)}
+.hero h1 em{color:var(--ink);background:linear-gradient(transparent 60%,color-mix(in srgb,var(--c-dye3) 60%,transparent) 60%);padding:0 .06em;border-radius:4px}
+.step,.prop,.info,.bench,.quiz,.tree,.bs-panel,.bs-fig,details.exam,.trap,.rules,.app{box-shadow:var(--shadow)}
+.btn,.btn.ghost,.ans,.opt,.picker button,.modes button,.chip,.bs-tabs button,.again{border-bottom-width:4px;border-bottom-style:solid;transition:transform .08s,border-bottom-width .08s}
+.btn{border-bottom-color:color-mix(in srgb,var(--accent) 55%,#000);padding:11px 20px;font-size:1rem}
+.btn.ghost{border-bottom-color:var(--accent)}
+.btn:active,.ans:active:not(:disabled),.opt:active,.picker button:active,.modes button:active,.chip:active,.bs-tabs button:active,.again:active{transform:translateY(2px);border-bottom-width:2px}
+.picker button[aria-pressed="true"],.bs-tabs button[aria-pressed="true"]{border-bottom-color:color-mix(in srgb,var(--ink) 70%,#000)}
+.ans{display:flex;align-items:center;gap:12px;padding:12px 14px;font-weight:700}
+.ans::after{margin-left:auto}
+.ans .let{flex:none;width:30px;height:30px;border-radius:9px;border:2px solid var(--line);display:grid;place-items:center;font:700 .88rem var(--f-mono);color:var(--muted);background:var(--surface)}
+.ans.ok .let{background:var(--good);border-color:var(--good);color:var(--accent-ink)}
+.ans.wrong .let{background:var(--bad);border-color:var(--bad);color:var(--accent-ink)}
+.ans.ok{animation:pop .35s ease-out}
+@keyframes pop{40%{transform:scale(1.025)}}
+@media (prefers-reduced-motion: reduce){.ans.ok{animation:none}}
+.qtext{font-size:1.4rem}
+.pbar{height:10px;border:1px solid var(--line)}
+.pbar i{background:linear-gradient(90deg,var(--accent),var(--c-dye2))}
+.stepk.s2,.step.s2 .n{color:var(--s2)}.stepk.s2 em,.step.s2 .n em{background:var(--s2)}
+.stepk.s3,.step.s3 .n{color:var(--s3)}.stepk.s3 em,.step.s3 .n em{background:var(--s3)}
+.step.s1 .bar i{background:var(--s1)}.step.s2 .bar i{background:var(--s2)}.step.s3 .bar i{background:var(--s3)}
+.step .bar{height:9px}
+.xp{display:inline-flex;align-items:center;gap:5px;margin-left:10px;background:var(--ink);color:var(--bg);border-radius:999px;padding:5px 11px 5px 8px;font:700 .85rem var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+.xp svg{width:15px;height:15px;color:var(--c-dye3)}
+.xp.bump{animation:pop .4s ease-out}
+@media (max-width:700px){.xp{margin-left:auto}}
+.score{font-size:3rem}
 #toast{position:fixed;left:50%;width:max-content;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:40;background:var(--ink);color:var(--bg);border-radius:999px;padding:12px 20px 12px 52px;font-size:1rem;max-width:calc(100% - 32px);box-shadow:0 12px 30px -12px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
 #toast.show{transform:translate(-50%,0)}
 @media (max-width:700px){#toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
@@ -377,7 +407,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
     <a href="#quiz">Quiz</a>
     <a href="#examen">Examenvragen</a>
   </nav>
-  <span class="sub">vwo · CE 2027</span>
+  <span class="xp" id="xp" title="XP: je verdient punten met animaties, blokschema's, de quiz en examenvragen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span id="xpn">0</span> XP</span>
 </div></div>
 <nav class="tabbar" aria-label="Onderdelen">
   <a href="#overzicht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overzicht</a>
@@ -404,7 +434,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 <main>
 <section id="overzicht"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>1</em>Begrijpen</p>
+    <p class="stepk s1"><em>1</em>Begrijpen</p>
     <h2>Welk verschil, welke methode?</h2>
     <p>Bij elk verschil in stofeigenschap horen één of meer methoden. Tik op een methode om te zien hoe hij werkt.</p>
   </div>
@@ -425,7 +455,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="werking"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>1</em>Begrijpen</p>
+    <p class="stepk s1"><em>1</em>Begrijpen</p>
     <h2>Zo werkt het</h2>
     <p>Kies een methode, druk op afspelen of sleep met de schuif door de stappen. De bolletjes zijn de deeltjes van de stoffen.</p>
   </div>
@@ -449,7 +479,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="kiezen"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>2</em>Toepassen</p>
+    <p class="stepk s2"><em>2</em>Toepassen</p>
     <h2>Welke methode kies ik?</h2>
     <p>Examenvragen vragen vaak: „Welke scheidingsmethode gebruik je hier, en waarom?” Beantwoord de vragen en je komt bij de juiste methode uit.</p>
   </div>
@@ -458,7 +488,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="valkuilen"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>2</em>Toepassen</p>
+    <p class="stepk s2"><em>2</em>Toepassen</p>
     <h2>Valkuilen op het examen</h2>
     <p>Hier gaan de meeste punten verloren.</p>
   </div>
@@ -467,7 +497,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="blokschema"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>2</em>Toepassen</p>
+    <p class="stepk s2"><em>2</em>Toepassen</p>
     <h2>Scheidingen in een blokschema</h2>
     <p>Op het examen zie je scheidingen vaak als blok in een industrieel proces. Tik op een blok <b>S</b> en kies welke scheidingsmethode daar hoort. Je krijgt uitleg bij elk antwoord.</p>
   </div>
@@ -490,7 +520,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="quiz"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>3</em>Oefenen</p>
+    <p class="stepk s3"><em>3</em>Oefenen</p>
     <h2>Quiz</h2>
     <p id="quizintro">Meerkeuzevragen en open vragen. Bij open vragen typ je eerst zelf een antwoord en vergelijk je het daarna met het antwoordmodel.</p>
   </div>
@@ -499,7 +529,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
 
 <section id="examen"><div class="wrap">
   <div class="sec-head">
-    <p class="stepk"><em>3</em>Oefenen</p>
+    <p class="stepk s3"><em>3</em>Oefenen</p>
     <h2>Examenvragen met uitwerking</h2>
     <p>Contextvragen zoals op het centraal examen. Probeer eerst zelf, kijk dan naar het antwoordmodel en vink de punten aan die je had.</p>
   </div>
@@ -1249,7 +1279,7 @@ function drawBS(){
   $("#bscap").textContent="Gestippeld = recyclestroom. Tik op een blauw S-blok.";
   const P=$("#bspanel");
   if(bsSel){const sd=bsCur.S[bsSel];
-    P.innerHTML=`<h3>Welke scheidingsmethode hoort in ${bsSel}?</h3><p>${sd.ctx}</p><div class="answers">${sd.opts.map((o,i)=>`<button class="ans" data-o="${i}">${o[0]}</button>`).join("")}</div><div id="bsfb"></div>`;
+    P.innerHTML=`<h3>Welke scheidingsmethode hoort in ${bsSel}?</h3><p>${sd.ctx}</p><div class="answers">${sd.opts.map((o,i)=>`<button class="ans" data-o="${i}"><span class="let">${"ABCD"[i]}</span><span>${o[0]}</span></button>`).join("")}</div><div id="bsfb"></div>`;
     P.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{const o=sd.opts[+b.dataset.o];
       P.querySelectorAll(".ans").forEach(x=>{x.classList.remove("ok","wrong");});b.classList.add(o[1]?"ok":"wrong");
       $("#bsfb").innerHTML=`<div class="expl"><b>${o[1]?"Goed!":"Nee."}</b> ${o[2]}</div>`;
@@ -1261,7 +1291,7 @@ function drawBS(){
         drawBSFig();}
     });
   } else if(bsExtra){const [q,opts,ex]=bsCur.extra;
-    P.innerHTML=`<h3>${q}</h3><div class="answers">${opts.map((o,i)=>`<button class="ans" data-o="${i}">${o[0]}</button>`).join("")}</div><div id="bsfb"></div>`;
+    P.innerHTML=`<h3>${q}</h3><div class="answers">${opts.map((o,i)=>`<button class="ans" data-o="${i}"><span class="let">${"ABCD"[i]}</span><span>${o[0]}</span></button>`).join("")}</div><div id="bsfb"></div>`;
     P.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{const good=opts[+b.dataset.o][1];P.querySelectorAll(".ans").forEach(x=>{x.disabled=true;if(opts[+x.dataset.o][1])x.classList.add("ok");else if(x===b)x.classList.add("wrong");});
       const nxt=BS[(BS.indexOf(bsCur)+1)%BS.length];
       $("#bsfb").innerHTML=`<div class="expl"><b>${good?"Goed!":"Nee."}</b> ${ex}</div><div class="qnav" style="margin-top:10px"><button class="btn" id="bsother">Naar ${nxt.name}</button></div>`;
@@ -1332,11 +1362,13 @@ function drawProg(){const el=$("#prog");if(!el)return;
   const bsTot=BS.reduce((s,b)=>s+Object.keys(b.S).length,0),bsN=Object.keys(ST.bs||{}).length;
   const quizPct=ST.best?ST.best.n/ST.best.of:0;
   const pct=v=>Math.round(Math.min(1,v)*100);
-  const card=(n,t,href,p,txt)=>`<a class="step" href="${href}"><span class="n"><em>${n}</em>${t}</span><span class="bar"><i style="width:${pct(p)}%"></i></span><small>${txt}</small></a>`;
+  const card=(n,t,href,p,txt)=>`<a class="step s${n}" href="${href}"><span class="n"><em>${n}</em>${t}</span><span class="bar"><i style="width:${pct(p)}%"></i></span><small>${txt}</small></a>`;
   el.innerHTML=card(1,"Begrijpen","#overzicht",ST.seen.length/METHODS.length,`${ST.seen.length}/${METHODS.length} animaties`)
     +card(2,"Toepassen","#blokschema",bsN/bsTot,`${bsN}/${bsTot} blokken goed`)
     +card(3,"Oefenen","#quiz",(quizPct+examPts/examMax)/2,`quiz ${ST.best?ST.best.n+"/"+ST.best.of:"–"} · examen ${examPts}/${examMax}p`);
-  $("#progfoot").innerHTML=`Je voortgang blijft op dit toestel bewaard${ST.wrong.length?` · nog ${ST.wrong.length} quizvragen te herhalen`:""}. <button class="${resetArmed?"sure":""}" id="resetp">${resetArmed?"Zeker weten? Tik nog een keer":"Wis voortgang"}</button>`;
+  const xp=ST.seen.length*10+bsN*20+(ST.best?ST.best.n*5:0)+examPts*5;const xe=$("#xpn");
+  if(xe){if(+xe.textContent<xp){$("#xp").classList.remove("bump");void $("#xp").offsetWidth;$("#xp").classList.add("bump");}xe.textContent=xp;}
+  $("#progfoot").innerHTML=`XP: animatie +10 · blokschema +20 · quiz +5 per goed · examen +5 per punt. Bewaard op dit toestel${ST.wrong.length?` · nog ${ST.wrong.length} quizvragen te herhalen`:""}. <button class="${resetArmed?"sure":""}" id="resetp">${resetArmed?"Zeker weten? Tik nog een keer":"Wis voortgang"}</button>`;
   $("#resetp").onclick=()=>{if(!resetArmed){resetArmed=true;drawProg();setTimeout(()=>{resetArmed=false;drawProg();},4000);return;}
     resetArmed=false;ST={seen:[],best:null,wrong:[],exam:{},bs:{}};save();drawExams();drawBS();startQuiz(qMode);};}
 function markSeen(k){if(!ST.seen.includes(k)){ST.seen.push(k);save();
@@ -1377,7 +1409,7 @@ function drawQuiz(){
       $("#qfb").innerHTML=`<div class="expl"><b>Antwoordmodel.</b> ${q.model}</div><p style="margin-top:10px"><b>Vink aan wat in jouw antwoord stond:</b></p><ul class="checks">${q.checks.map((c,i)=>`<li><label><input type="checkbox" id="qc${i}"><span>${c}</span></label></li>`).join("")}</ul><div class="qnav" style="margin-top:10px"><button class="btn" id="qnext">${qi+1<qOrder.length?"Volgende vraag":"Bekijk je score"}</button></div>`;
       $("#qnext").onclick=()=>{const all=[...box.querySelectorAll(".checks input")].every(i=>i.checked);recordResult(q.id,all);next();};};
     return;}
-  box.innerHTML=`${head}<div class="answers">${opts.map(o=>`<button class="ans" data-o="${o}">${q.a[o]}</button>`).join("")}</div><div id="qfb"></div>`;
+  box.innerHTML=`${head}<div class="answers">${opts.map((o,j)=>`<button class="ans" data-o="${o}"><span class="let">${"ABCD"[j]}</span><span>${q.a[o]}</span></button>`).join("")}</div><div id="qfb"></div>`;
   wireModes(box);
   box.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{
     if(qAns!==null)return;qAns=+b.dataset.o;const good=qAns===0;qCount++;if(good)qScore++;recordResult(q.id,good);

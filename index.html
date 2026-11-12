@@ -458,7 +458,7 @@ footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:
   </div>
   <div class="picker" id="picker" role="group" aria-label="Kies een scheidingsmethode"></div>
   <div class="labgrid">
-    <div class="bench">
+    <div class="bench" id="bench">
       <div class="mnav"><p class="benchbasis" id="benchbasis"></p><span class="mstep"><button id="prevm" aria-label="Vorige methode">‹</button><span id="mcount" class="mono">1/12</span><button id="nextm" aria-label="Volgende methode">›</button></span></div>
       <canvas id="cv" role="img" aria-label="Animatie van de gekozen scheidingsmethode"></canvas>
       <div class="controls">
@@ -1186,10 +1186,12 @@ function selectMethod(key,{scroll=false,autoplay=true}={}){
     <div class="micro"><small>vwo · Op microniveau</small><ul>${cur.micro.map(x=>`<li>${x}</li>`).join("")}</ul></div>
     <dl><div><dt>Soort mengsel</dt><dd>${cur.mix}</dd></div><div><dt>Wat krijg je</dt><dd>${cur.get}</dd></div><div><dt>Uit het dagelijks leven</dt><dd>${cur.ex}</dd></div></dl>
     <div class="tip"><b>${cur.tip[0]}</b>${cur.tip[1]}</div>`;
-  if(scroll)$("#werking").scrollIntoView({behavior:reduce?"auto":"smooth"});
+  if(scroll)toBench();
   setPlaying(false);render();
   if(autoplay&&!reduce&&(seen||scroll))setTimeout(()=>setPlaying(true),scroll?500:150);
 }
+function toBench(){const b=$("#bench");const bar=document.querySelector(".bar");const y=b.getBoundingClientRect().top+scrollY-(bar?bar.offsetHeight:0)-8;scrollTo({top:y,behavior:reduce?"auto":"smooth"});}
+document.addEventListener("click",e=>{const a=e.target.closest('a[href="#werking"]');if(!a)return;e.preventDefault();history.replaceState(null,"","#werking");toBench();if(!playing&&!reduce){seen=true;if(T>=1)T=0;setPlaying(true);}});
 function initLab(){
   $("#picker").innerHTML=METHODS.map(m=>`<button data-k="${m.key}" aria-pressed="false"><i style="background:var(${PROPS.find(p=>p.id===m.prop).color})"></i><span>${m.name.replace("Papier- en dunnelaagchromatografie","Papier/DLC").replace("Bezinken + decanteren","Bezinken").replace("Gefractioneerde destillatie","Gefractioneerd").replace("Neerslaan + filtreren","Neerslaan").replace("(Her)kristalliseren","Kristalliseren").replace("Gaschromatografie","Gaschromat. (GC)")}</span></button>`).join("");
   $("#picker").addEventListener("click",e=>{const b=e.target.closest("button");if(b){history.replaceState(null,"","#"+b.dataset.k);selectMethod(b.dataset.k);}});
@@ -1568,7 +1570,7 @@ function initNav2(){
 
 if(matchMedia("(max-width:640px)").matches)$("#tblwrap").open=false;
 initOverview();drawTree();drawBS();startQuiz();drawExams();initNav2();drawProg();
-const boot=()=>{initLab();const h=location.hash.slice(1);if(METHODS.some(m=>m.key===h))setTimeout(()=>$("#werking").scrollIntoView(),50);};
+const boot=()=>{initLab();const h=location.hash.slice(1);if(METHODS.some(m=>m.key===h)||h==="werking")setTimeout(toBench,60);};
 Promise.race([document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(),new Promise(r=>setTimeout(r,1500))]).then(boot,boot);
 </script>
 

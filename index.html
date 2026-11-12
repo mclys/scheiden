@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta property="og:title" content="Scheidingsmethoden VWO">
+<meta property="og:description" content="Animaties, blokschema's, quiz en examenvragen voor het vwo-eindexamen scheikunde.">
+<meta property="og:image" content="icon-512.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>Scheidingsmethoden VWO 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-title" content="Scheiden">
+<meta name="theme-color" content="#2446b3">
+<meta name="description" content="Interactief overzicht van alle scheidingsmethoden voor het vwo-eindexamen scheikunde: waar ze op berusten, hoe ze werken, quiz en examenvragen met uitwerking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Plan: millimeterpapier-labjournaal; kleuren zijn de stoffen zelf (kleurstoffen uit een chromatogram).
+   Layout: smalle leeskolom, brede 'labtafel' voor de animaties; op telefoon alles onder elkaar. */
+:root{
+  --bg:#edf1f2; --grid:rgba(30,70,90,.07); --surface:#ffffff; --surface-2:#f5f8f9;
+  --ink:#14232c; --muted:#4f626c; --line:#cad5da;
+  --accent:#2446b3; --accent-soft:#e2e8fa; --accent-ink:#ffffff;
+  --good:#1d7546; --good-soft:#dff1e6; --bad:#b0281f; --bad-soft:#f8e1de;
+  --c-water:#3a8bd6; --c-sand:#9c6a33; --c-salt:#8457c4; --c-dye1:#d0336c; --c-dye2:#1798c0; --c-dye3:#d99c00;
+  --c-eth:#249157; --c-carbon:#2b3034; --c-flame:#ee8420; --c-glass:#6f8996; --c-liquid:rgba(58,139,214,.17);
+  --c-hex:rgba(140,150,160,.16); --c-iodw:#9a5a1c; --c-iodh:#8a3cb6; --c-paper:#fbfcfc; --c-ink:#14232c; --c-muted:#56707c;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --r:14px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1519; --grid:rgba(140,190,210,.06); --surface:#151f25; --surface-2:#1a262d;
+    --ink:#e3ebee; --muted:#9db0b9; --line:#2b3a42;
+    --accent:#8ba3ff; --accent-soft:#1f2a4d; --accent-ink:#0e1519;
+    --good:#5fcf8f; --good-soft:#163526; --bad:#ff8a7f; --bad-soft:#3d1c19;
+    --c-water:#5aa6ec; --c-sand:#c9975c; --c-salt:#a983e6; --c-dye1:#ef5b91; --c-dye2:#3cbde3; --c-dye3:#f2bc2e;
+    --c-eth:#4cc283; --c-carbon:#6b757b; --c-flame:#ff9a3d; --c-glass:#97b0bd; --c-liquid:rgba(90,166,236,.2);
+    --c-hex:rgba(170,180,190,.13); --c-iodw:#c98a45; --c-iodh:#bf73ea; --c-paper:#1d2a31; --c-ink:#e3ebee; --c-muted:#9db0b9;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+    --bg:#0e1519; --grid:rgba(140,190,210,.06); --surface:#151f25; --surface-2:#1a262d;
+    --ink:#e3ebee; --muted:#9db0b9; --line:#2b3a42;
+    --accent:#8ba3ff; --accent-soft:#1f2a4d; --accent-ink:#0e1519;
+    --good:#5fcf8f; --good-soft:#163526; --bad:#ff8a7f; --bad-soft:#3d1c19;
+    --c-water:#5aa6ec; --c-sand:#c9975c; --c-salt:#a983e6; --c-dye1:#ef5b91; --c-dye2:#3cbde3; --c-dye3:#f2bc2e;
+    --c-eth:#4cc283; --c-carbon:#6b757b; --c-flame:#ff9a3d; --c-glass:#97b0bd; --c-liquid:rgba(90,166,236,.2);
+    --c-hex:rgba(170,180,190,.13); --c-iodw:#c98a45; --c-iodh:#bf73ea; --c-paper:#1d2a31; --c-ink:#e3ebee; --c-muted:#9db0b9;
+    color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:22px 22px;color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,4.6vw,2.3rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:54px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.05rem;white-space:nowrap;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:8px}
+.brand i{display:inline-flex;gap:2px}
+.brand i b{width:7px;height:7px;border-radius:50%;display:block}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav::-webkit-scrollbar{display:none}
+@media (max-width:700px){.nav{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);padding-right:24px}}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:700;font-size:.92rem;padding:7px 11px;border-radius:999px}
+.nav a:hover,.nav a.on{color:var(--ink);background:var(--surface)}
+
+
+/* hero */
+.hero{padding:44px 0 26px}
+.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.kicker{font-weight:700;color:var(--muted);font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.hero h1{font-size:clamp(2.3rem,8vw,4.4rem);font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:16px;max-width:58ch;font-size:1.08rem;color:var(--muted)}
+.hero .lead b{color:var(--ink)}
+.strip{width:118px;height:250px;background:var(--c-paper);border:1px solid var(--line);border-radius:4px;position:relative;box-shadow:0 10px 30px -18px rgba(0,0,0,.35);overflow:hidden}
+.strip .wet{position:absolute;left:0;right:0;bottom:0;height:88%;background:var(--c-liquid);animation:wet 3.2s cubic-bezier(.3,.6,.3,1) both}
+.strip .start{position:absolute;left:12px;right:12px;bottom:34px;border-top:2px dashed var(--c-muted);opacity:.6}
+.strip .front{position:absolute;left:0;right:0;top:12%;border-top:1.5px dashed var(--c-water);animation:fade 3.2s both}
+.strip .sp{position:absolute;left:50%;width:22px;height:15px;margin-left:-11px;border-radius:50%;bottom:27px;animation:3.2s cubic-bezier(.3,.6,.3,1) both}
+.strip .s1{background:var(--c-dye1);animation-name:s1}.strip .s2{background:var(--c-dye2);animation-name:s2}.strip .s3{background:var(--c-dye3);animation-name:s3}
+.strip .lbl{position:absolute;right:6px;font:600 11px var(--f-mono);color:var(--muted);animation:fade 3.2s both}
+@keyframes wet{from{height:9%}to{height:88%}}
+@keyframes fade{0%,70%{opacity:0}100%{opacity:1}}
+@keyframes s1{from{transform:translateY(0);filter:brightness(.25)}to{transform:translateY(-44px)}}
+@keyframes s2{from{transform:translateY(0);filter:brightness(.25)}to{transform:translateY(-100px)}}
+@keyframes s3{from{transform:translateY(0);filter:brightness(.25)}to{transform:translateY(-150px)}}
+@media (prefers-reduced-motion: reduce){.strip *{animation-duration:1ms!important}}
+@media (max-width:640px){.hero .wrap{grid-template-columns:1fr;position:relative}.strip{position:absolute;top:-6px;right:max(16px,env(safe-area-inset-right,0px));transform:scale(.6);transform-origin:top right}.hero .kicker,.hero h1{padding-right:82px}.hero{padding-top:30px}}
+
+section{padding:34px 0}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;max-width:70ch}
+.sec-head p{color:var(--muted)}
+
+/* properties grid */
+.props{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.prop{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.prop::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--pc)}
+.prop .lab{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.prop h3{font-size:1.3rem}
+.prop p{font-size:.95rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.92rem;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip::after{content:"▸";font-size:.8em;opacity:.6}
+
+/* exam phrasing box */
+.say{margin-top:16px;background:var(--accent-soft);border-radius:var(--r);padding:16px 18px;display:grid;gap:6px}
+.say b{font-family:var(--f-display)}
+.say .formula{font-size:1.06rem}
+.say .formula u{text-decoration:none;border-bottom:2px solid var(--accent);font-weight:700}
+
+/* table */
+.tblwrap{margin-top:16px;background:transparent}
+.tblwrap>summary{font-family:var(--f-display);font-size:1.1rem;padding:10px 0}
+.tbl{margin-top:4px;overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+td b{color:var(--accent)}
+
+/* lab */
+.picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;padding:2px 0 12px}
+@media (max-width:560px){.picker{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.picker button{display:flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;font-weight:700;cursor:pointer;font-size:.92rem;text-align:left;min-width:0}
+.picker button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.picker button i{width:10px;height:10px;border-radius:50%;flex:none}
+@media (max-width:560px){.picker button{font-size:.9rem;padding:7px 10px}}
+.picker button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.labgrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.labgrid{grid-template-columns:1fr}}
+.bench{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;display:grid;gap:10px}
+.bench canvas{width:100%;aspect-ratio:16/10;display:block;border-radius:10px;background:var(--surface-2);touch-action:pan-y}
+.controls{display:flex;align-items:center;gap:10px;padding:0 4px}
+.play{width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+.play svg{width:18px;height:18px}
+.again{border:1.5px solid var(--line);background:var(--surface-2);border-radius:999px;padding:8px 12px;font-weight:700;cursor:pointer;font-size:.88rem;flex:0 0 auto}
+input[type=range]{flex:1;accent-color:var(--accent);min-width:60px;height:30px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;padding:0 6px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.legend i.ring{background:transparent!important;border:2px solid}
+.steps{list-style:none;margin:0;padding:0 4px 4px;display:grid;gap:4px;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:26px 1fr;gap:8px;padding:7px 8px;border-radius:8px;color:var(--muted);font-size:.95rem;cursor:pointer}
+.steps li::before{content:counter(st);width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font:600 .8rem var(--f-mono)}
+.steps li.on{background:var(--accent-soft);color:var(--ink)}
+.steps li.on::before{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.info{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--mc,var(--accent));border-radius:var(--r);padding:18px;display:grid;gap:14px}
+.info h3{font-size:1.6rem;font-weight:800}
+.basis{display:grid;gap:4px;padding:12px 14px;border-radius:10px;background:var(--accent-soft)}
+.basis small{font-weight:700;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.basis .ex{font-style:italic;font-size:.95rem}
+.benchbasis{padding:2px 6px 0;font-size:.95rem;color:var(--muted)}
+.benchbasis b{color:var(--accent)}
+.scale{font-size:.8rem;color:var(--muted);padding:0 6px}
+.basis strong{font-family:var(--f-display);font-size:1.25rem;color:var(--accent)}
+.info dl{margin:0;display:grid;gap:10px}
+.info dt{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.info dd{margin:2px 0 0}
+.tip{border-left:4px solid var(--c-dye3);padding:8px 12px;background:var(--surface-2);border-radius:0 8px 8px 0;font-size:.95rem}
+.tip b{display:block;font-family:var(--f-display)}
+
+/* traps */
+.traps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:18px}
+.trap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:6px}
+.trap .no{color:var(--bad);font-weight:700}
+.trap .yes{color:var(--good);font-weight:700}
+.trap p{font-size:.95rem}
+
+/* decision tree */
+.tree{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:14px;max-width:820px}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:.88rem;color:var(--muted)}
+.crumbs button{border:0;background:none;color:var(--accent);font-weight:700;cursor:pointer;padding:0;text-decoration:underline}
+.tree .q{font-family:var(--f-display);font-size:1.35rem;font-weight:600}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px 14px;cursor:pointer;display:grid;gap:2px}
+.opt:hover{border-color:var(--accent)}
+.opt b{font-size:1rem}
+.opt span{font-size:.9rem;color:var(--muted)}
+.result{display:grid;gap:10px}
+.result .r{border:1.5px solid var(--accent);border-radius:12px;padding:12px 14px;display:grid;gap:4px;background:var(--accent-soft)}
+.result .r b{font-family:var(--f-display);font-size:1.2rem}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 16px;font-weight:700;cursor:pointer;justify-self:start}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+
+/* quiz */
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:14px;max-width:820px}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.9rem;color:var(--muted);font-weight:700}
+.pbar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.qtext{font-family:var(--f-display);font-size:1.3rem;font-weight:600}
+.answers{display:grid;gap:8px}
+.ans{text-align:left;border:1.5px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:1rem}
+.ans:hover:not(:disabled){border-color:var(--accent)}
+.ans:disabled{cursor:default}
+.ans.ok{border-color:var(--good);background:var(--good-soft)}
+.ans.ok::after{content:"  ✓ goed";color:var(--good);font-weight:700}
+.ans.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.ans.wrong::after{content:"  ✗";color:var(--bad);font-weight:700}
+.expl{padding:12px 14px;border-radius:12px;background:var(--surface-2);font-size:.97rem}
+.expl b{font-family:var(--f-display)}
+.qnav{display:flex;gap:8px;flex-wrap:wrap}
+.score{font-family:var(--f-display);font-size:2.4rem;font-weight:800}
+
+/* exam */
+.exams{display:grid;max-width:860px}
+.exam{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+details.exam{background:var(--surface);border-radius:var(--r)}
+details.exam>summary{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:14px 16px;color:var(--ink);cursor:pointer}
+details.exam>summary::before,details.exam[open]>summary::before{content:none}
+details.exam>summary h3{font-size:1.12rem;font-weight:800;min-width:0}
+details.exam .exn{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:700 .9rem var(--f-mono)}
+details.exam.full .exn{background:var(--good);color:var(--accent-ink)}
+details.exam .chev{width:10px;height:10px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px}
+details.exam[open] .chev{transform:rotate(-135deg);margin-top:6px}
+details.exam[open]>summary{border-bottom:1px solid var(--line)}
+.exams{gap:10px}
+.exam .tot{font:600 .9rem var(--f-mono);color:var(--muted);white-space:nowrap}
+.ctx{padding:12px 18px 4px;display:grid;gap:10px}
+.ctx p{max-width:68ch}
+.ctx table{min-width:0;width:auto;font-size:.93rem;border:1px solid var(--line)}
+.ctx td,.ctx th{padding:6px 12px}
+.ctx td:first-child{white-space:normal}
+.sub{border-top:1px solid var(--line);padding:14px 18px;display:grid;gap:10px}
+.sub .qq{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.sub .qq .pt{font:600 .85rem var(--f-mono);color:var(--muted);padding-top:2px}
+details{border-radius:10px;background:var(--surface-2)}
+details summary{cursor:pointer;padding:9px 12px;font-weight:700;color:var(--accent);list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"＋ ";}
+details[open] summary::before{content:"－ ";}
+details .body{padding:0 14px 12px;display:grid;gap:8px;font-size:.97rem}
+.rubric{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rubric label{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;cursor:pointer}
+.rubric input{width:18px;height:18px;margin-top:3px;accent-color:var(--good)}
+.rubric .p{font:600 .85rem var(--f-mono);color:var(--muted)}
+.calc{font-family:var(--f-mono);font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow-x:auto;white-space:pre}
+
+/* vwo micro layer */
+.micro{border:1.5px dashed var(--accent);border-radius:12px;padding:12px 14px;display:grid;gap:6px;font-size:.95rem}
+.micro small{font-weight:700;color:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+.micro p{margin:0}
+.micro ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.micro b{color:var(--ink)}
+.tag{display:inline-block;font:700 .72rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:6px;padding:2px 7px;vertical-align:middle}
+
+/* progress */
+.prog{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:18px;font-size:.92rem;color:var(--muted)}
+.prog b{color:var(--ink);font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.prog .reset{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0;font-size:.88rem}
+.prog .reset.sure{color:var(--bad);font-weight:700}
+
+/* blokschema */
+.bs-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.bs-tabs button{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 12px;font-weight:700;cursor:pointer}
+.bs-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bs{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.bs{grid-template-columns:1fr}}
+.bs-fig{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:8px;min-width:0}
+.bs-scroll{overflow-x:auto}
+.bs-fig svg{display:block;width:100%;min-width:520px;height:auto}
+.bs-fig svg.v{min-width:0;max-width:380px;margin:0 auto}
+.bs-fig .cap{font-size:.88rem;color:var(--muted)}
+svg .blk{fill:var(--surface-2);stroke:var(--ink);stroke-width:1.6}
+svg .blk.s{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2;cursor:pointer}
+svg .blk.s.done{fill:var(--good-soft);stroke:var(--good)}
+svg .blk.s.active{stroke-width:3.5}
+svg .bt{fill:var(--ink);font:700 15px var(--f-body);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+svg .bt.small{font:400 12px var(--f-body);fill:var(--muted)}
+svg .st{fill:var(--muted);font:400 12.5px var(--f-body);dominant-baseline:middle}
+svg .st.rec{fill:var(--accent);font-weight:700}
+svg .ln{stroke:var(--muted);stroke-width:1.6;fill:none}
+svg .ln.rec{stroke:var(--accent);stroke-dasharray:6 4}
+svg .ah{fill:var(--muted)}
+svg .ah.rec{fill:var(--accent)}
+svg g.sbtn:focus{outline:none}
+svg g.sbtn:focus-visible .blk{stroke-width:4}
+.bs-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.bs-panel h3{font-size:1.25rem}
+.rules{margin:16px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;gap:8px;max-width:860px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:4px}
+
+/* open question */
+.open textarea{width:100%;min-height:96px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;background:var(--surface-2);color:var(--ink);resize:vertical}
+.open textarea:focus{border-color:var(--accent);outline:none}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.checks label{display:grid;grid-template-columns:22px 1fr;gap:8px;cursor:pointer;align-items:start}
+.checks input{width:18px;height:18px;margin-top:3px;accent-color:var(--good)}
+.modes{display:flex;flex-wrap:wrap;gap:6px}
+.modes button{border:1.5px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:.88rem}
+.modes button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.whyw{color:var(--bad);font-weight:700}
+
+/* app install */
+.app{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:6px}
+.app ol{margin:0;padding-left:20px}
+
+/* route */
+.route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;max-width:780px}
+.step{display:grid;gap:7px;align-content:start;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;transition:border-color .15s,transform .15s}
+.step:hover{border-color:var(--accent);transform:translateY(-2px)}
+.step .n{display:flex;align-items:center;gap:8px;font:700 .74rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.step .n em{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:700 .8rem var(--f-mono)}
+.step b{font-family:var(--f-display);font-size:1.25rem;line-height:1.1}
+.step .bar{height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.step .bar i{display:block;height:100%;background:var(--good);border-radius:99px;transition:width .4s}
+.step small{color:var(--muted);font-size:.86rem;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.route{gap:6px}.step{padding:10px 10px;gap:5px}.step b{font-size:1.02rem}.step small{font-size:.76rem}.step .n{font-size:.66rem;gap:5px}.step .n em{width:18px;height:18px;font-size:.7rem}}
+.routefoot{margin-top:8px;font-size:.85rem;color:var(--muted)}
+.routefoot button{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0;font-size:.85rem}
+.routefoot button.sure{color:var(--bad);font-weight:700}
+.stepk{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--accent);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.stepk em{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:700 .78rem var(--f-mono);letter-spacing:0}
+
+/* phone tab bar */
+.tabbar{display:none}
+@media (max-width:700px){
+  .bar .nav{display:none}
+  .bar .sub{margin-left:auto;font-size:.8rem;color:var(--muted);font-weight:700}
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:25;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
+  .tabbar a{display:grid;justify-items:center;gap:3px;text-decoration:none;color:var(--muted);font-size:.7rem;font-weight:700;padding:4px 0;border-radius:10px}
+  .tabbar a.on{color:var(--accent);background:var(--accent-soft)}
+  .tabbar svg{width:22px;height:22px}
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+}
+@media (min-width:701px){.bar .sub{display:none}}
+
+#toast{position:fixed;left:50%;width:max-content;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:40;background:var(--ink);color:var(--bg);border-radius:999px;padding:12px 20px 12px 52px;font-size:1rem;max-width:calc(100% - 32px);box-shadow:0 12px 30px -12px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
+#toast.show{transform:translate(-50%,0)}
+@media (max-width:700px){#toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+#toast .burst{position:absolute;left:26px;top:50%;width:0;height:0}
+#toast .burst i{position:absolute;width:7px;height:7px;border-radius:50%;left:-3.5px;top:-3.5px;opacity:0}
+#toast.show .burst i{animation:burst .9s ease-out .15s both}
+@keyframes burst{0%{transform:rotate(var(--a)) translateY(0);opacity:1}100%{transform:rotate(var(--a)) translateY(-26px);opacity:0}}
+@media (prefers-reduced-motion: reduce){#toast{transition:none}#toast.show .burst i{animation:none;opacity:1;transform:rotate(var(--a)) translateY(-12px)}}
+
+footer{padding:30px 0 50px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:grid;gap:6px;max-width:820px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+<div class="bar"><div class="wrap">
+  <a class="brand" href="#start"><i><b style="background:var(--c-dye1)"></b><b style="background:var(--c-dye2)"></b><b style="background:var(--c-dye3)"></b></i><span>Scheidingsmethoden</span></a>
+  <nav class="nav" aria-label="Onderdelen">
+    <a href="#overzicht">Overzicht</a>
+    <a href="#werking">Zo werkt het</a>
+    <a href="#kiezen">Kiezen</a>
+    <a href="#valkuilen">Valkuilen</a>
+    <a href="#blokschema">Blokschema's</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#examen">Examenvragen</a>
+  </nav>
+  <span class="sub">vwo · CE 2027</span>
+</div></div>
+<nav class="tabbar" aria-label="Onderdelen">
+  <a href="#overzicht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overzicht</a>
+  <a href="#werking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/></svg>Animaties</a>
+  <a href="#blokschema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="8" width="7" height="8" rx="1.5"/><rect x="15" y="8" width="7" height="8" rx="1.5"/><path d="M9 12h6M13 10l2 2-2 2"/></svg>Blokschema</a>
+  <a href="#quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/></svg>Quiz</a>
+  <a href="#examen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg>Examen</a>
+</nav>
+
+<header class="hero" id="start"><div class="wrap">
+  <div>
+    <p class="kicker">Voor Renske · scheikunde vwo · centraal examen 2027</p>
+    <h1>Scheiden is gebruikmaken van <em>een verschil</em></h1>
+    <p class="lead">Elke scheidingsmethode berust op een <b>verschil in een stofeigenschap</b> tussen de stoffen in een mengsel. Op het vwo moet je ook kunnen uitleggen <b>waarom</b> stoffen in die eigenschap verschillen: dat staat bij elke methode onder <span class="tag">vwo</span> Op microniveau. Daarna oefen je met blokschema's, de quiz en examenvragen met uitwerking.</p>
+    <div class="route" id="prog" aria-live="polite"></div><p class="routefoot" id="progfoot"></p>
+  </div>
+  <div class="strip" aria-hidden="true">
+    <div class="wet"></div><div class="front"></div><div class="start"></div>
+    <div class="sp s1"></div><div class="sp s2"></div><div class="sp s3"></div>
+    <div class="lbl" style="top:5%">front</div><div class="lbl" style="bottom:12px">start</div>
+  </div>
+</div></header>
+
+<main>
+<section id="overzicht"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>1</em>Begrijpen</p>
+    <h2>Welk verschil, welke methode?</h2>
+    <p>Bij elk verschil in stofeigenschap horen één of meer methoden. Tik op een methode om te zien hoe hij werkt.</p>
+  </div>
+  <div class="props" id="props"></div>
+  <div class="say">
+    <b>Zo schrijf je het op het examen</b>
+    <p class="formula">„<u>[Methode]</u> berust op het verschil in <u>[stofeigenschap]</u> tussen <u>[stof A]</u> en <u>[stof B]</u>.”</p>
+    <p>Voorbeeld: <i>Destilleren berust op het verschil in kookpunt tussen ethanol en water.</i> Noem altijd de eigenschap én de stoffen.</p>
+  </div>
+  <details class="tblwrap" id="tblwrap" open><summary>Alles in één tabel</summary>
+  <div class="tbl" role="region" aria-label="Overzichtstabel, horizontaal scrollbaar" tabindex="0">
+    <table>
+      <thead><tr><th>Methode</th><th>Berust op verschil in</th><th>Soort mengsel</th><th>Wat krijg je</th><th>Voorbeeld</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div></details>
+</div></section>
+
+<section id="werking"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>1</em>Begrijpen</p>
+    <h2>Zo werkt het</h2>
+    <p>Kies een methode, druk op afspelen of sleep met de schuif door de stappen. De bolletjes zijn de deeltjes van de stoffen.</p>
+  </div>
+  <div class="picker" id="picker" role="group" aria-label="Kies een scheidingsmethode"></div>
+  <div class="labgrid">
+    <div class="bench">
+      <p class="benchbasis" id="benchbasis"></p>
+      <canvas id="cv" role="img" aria-label="Animatie van de gekozen scheidingsmethode"></canvas>
+      <div class="controls">
+        <button class="play" id="play" aria-label="Afspelen"></button>
+        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Tijdlijn van de animatie">
+        <button class="again" id="again">Opnieuw</button>
+      </div>
+      <div class="legend" id="legend"></div>
+      <p class="scale">Bolletjes en apparatuur zijn niet op schaal.</p>
+      <ol class="steps" id="steps"></ol>
+    </div>
+    <article class="info" id="info" aria-live="polite"></article>
+  </div>
+</div></section>
+
+<section id="kiezen"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>2</em>Toepassen</p>
+    <h2>Welke methode kies ik?</h2>
+    <p>Examenvragen vragen vaak: „Welke scheidingsmethode gebruik je hier, en waarom?” Beantwoord de vragen en je komt bij de juiste methode uit.</p>
+  </div>
+  <div class="tree" id="tree"></div>
+</div></section>
+
+<section id="valkuilen"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>2</em>Toepassen</p>
+    <h2>Valkuilen op het examen</h2>
+    <p>Hier gaan de meeste punten verloren.</p>
+  </div>
+  <div class="traps" id="traps"></div>
+</div></section>
+
+<section id="blokschema"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>2</em>Toepassen</p>
+    <h2>Scheidingen in een blokschema</h2>
+    <p>Op het examen zie je scheidingen vaak als blok in een industrieel proces. Tik op een blok <b>S</b> en kies welke scheidingsmethode daar hoort. Je krijgt uitleg bij elk antwoord.</p>
+  </div>
+  <div class="bs-tabs" id="bstabs" role="group" aria-label="Kies een proces"></div>
+  <div class="bs">
+    <div class="bs-fig"><div class="bs-scroll" id="bsfig"></div><p class="cap" id="bscap"></p></div>
+    <div class="bs-panel" id="bspanel" aria-live="polite"></div>
+  </div>
+  <div class="rules">
+    <b style="font-family:var(--f-display);font-size:1.1rem">Zo lees en teken je een blokschema</b>
+    <ul>
+      <li>Een blok is een ruimte: R = reactor, S = scheidingsruimte, M = mengruimte.</li>
+      <li>Een pijl is een stofstroom. Zet bij elke pijl welke stoffen erin zitten.</li>
+      <li>Wat erin gaat, moet er ook weer uit: elke stof die een S-blok in gaat, komt er via een van de uitgaande pijlen weer uit.</li>
+      <li>Stoffen die niet hebben gereageerd (bijvoorbeeld bij een evenwicht) gaan via een <b>recyclestroom</b> terug naar de reactor.</li>
+      <li>Bij elk S-blok kun je een vraag verwachten: welke methode, en op welk verschil in stofeigenschap berust die?</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>3</em>Oefenen</p>
+    <h2>Quiz</h2>
+    <p id="quizintro">Meerkeuzevragen en open vragen. Bij open vragen typ je eerst zelf een antwoord en vergelijk je het daarna met het antwoordmodel.</p>
+  </div>
+  <div class="quiz" id="quizbox"></div>
+</div></section>
+
+<section id="examen"><div class="wrap">
+  <div class="sec-head">
+    <p class="stepk"><em>3</em>Oefenen</p>
+    <h2>Examenvragen met uitwerking</h2>
+    <p>Contextvragen zoals op het centraal examen. Probeer eerst zelf, kijk dan naar het antwoordmodel en vink de punten aan die je had.</p>
+  </div>
+  <div class="exams" id="exams"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="app" id="app">
+    <b style="font-family:var(--f-display);color:var(--ink);font-size:1.05rem">Als app op je telefoon</b>
+    <ol>
+      <li>Open deze pagina in Safari (iPhone) of Chrome (Android).</li>
+      <li>iPhone: tik op Deel en kies <i>Zet op beginscherm</i>. Android: tik op ⋮ en kies <i>Toevoegen aan startscherm</i>.</li>
+      <li>Je voortgang blijft op dit toestel bewaard. Na de eerste keer openen werkt de app ook zonder internet.</li>
+    </ol>
+  </div>
+  <p>Gebaseerd op de syllabus scheikunde vwo 2027: subdomein R&amp;A2 (scheidings- en analysemethoden: toelichten op welk verschil in stofeigenschap ze berusten, een keuze formuleren en beoordelen, een (gas)chromatogram interpreteren) en T1 (industriële processen in blokschema's). Termen sluiten aan bij de Nova-methode; controleer bij twijfel je eigen boek.</p>
+  <p>Kookpunten en dichtheden zijn afgeronde waarden (zie Binas). De Rf-waarden en meetwaarden in de oefenopgaven zijn verzonnen voor deze opgaven.</p>
+  <p><a href="https://www.examenblad.nl/2027/vwo/documenten/syllabus-scheikunde-vwo-2027">Syllabus scheikunde vwo 2027 op examenblad.nl</a></p>
+</div></footer>
+
+<script>
+"use strict";
+/* ====================== DATA ====================== */
+const METHODS = [
+ {key:"filtreren", name:"Filtreren", basis:"deeltjesgrootte", prop:"grootte",
+  micro:["Opgeloste ionen (Na⁺, Cl⁻) zijn <b>gehydrateerd</b> en kleiner dan een nanometer.", "De poriën van filtreerpapier zijn <b>duizenden keren groter</b> (micrometers): opgeloste deeltjes gaan erdoor.", "Zand (SiO₂, covalent netwerk) <b>lost niet op</b> en blijft als grote korrels op het filter."],
+  say:"Filtreren berust op het verschil in deeltjesgrootte tussen zandkorrels en (de deeltjes van) zout water.",
+  mix:"Suspensie: een vaste stof die níet is opgelost in een vloeistof (zand in water).",
+  get:"Residu (blijft op het filter) en filtraat (gaat erdoor, mét de opgeloste stoffen).",
+  ex:"Koffiefilter, theezakje, vergiet bij de pasta.",
+  tip:["Opgelost gaat erdoor","Opgeloste deeltjes zijn veel kleiner dan de poriën van het filter. Zout water filtreren levert dus geen zoet water op."],
+  legend:[["c-sand","zandkorrel"],["c-water","watermolecuul"],["c-salt","opgelost zout"]],
+  steps:[[0,"Giet het mengsel van zand en zout water in de trechter met filtreerpapier."],[.25,"Kleine deeltjes (water en opgelost zout) passen door de poriën van het papier."],[.5,"Zandkorrels zijn groter dan de poriën en blijven op het papier liggen."],[.8,"Op het filter: het residu (zand). In het bekerglas: het filtraat (zout water)."]], dur:8},
+ {key:"bezinken", name:"Bezinken + decanteren", basis:"dichtheid", prop:"dichtheid",
+  micro:["Watermoleculen vormen onderling <b>waterstofbruggen</b>.", "<b>Apolaire</b> oliemoleculen kunnen dat niet en worden eruit gedrukt: er ontstaan <b>twee lagen</b>.", "Welke laag boven komt, bepaalt de <b>dichtheid</b>."],
+  say:"Bezinken berust op het verschil in dichtheid tussen klei en water.",
+  mix:"Suspensie, of twee vloeistoffen die niet mengen.",
+  get:"Bezinksel onderin en heldere vloeistof erboven. Afschenken heet decanteren.",
+  ex:"Bezinkbak in de waterzuivering, slib in een sloot, olie die op water drijft.",
+  tip:["Langzaam bij kleine deeltjes","Fijne deeltjes zakken heel langzaam. Wil je het sneller? Dan centrifugeren."],
+  legend:[["c-sand","kleideeltje (grote dichtheid)"],["c-water","water"]],
+  steps:[[0,"Een troebel mengsel: vaste deeltjes zweven door de vloeistof."],[.12,"De deeltjes hebben een grotere dichtheid dan water en zakken naar de bodem."],[.55,"Er ligt een bezinksel op de bodem met heldere vloeistof erboven."],[.62,"Decanteren: schenk de heldere vloeistof voorzichtig af in een ander bekerglas."]], dur:9},
+ {key:"centrifugeren", name:"Centrifugeren", basis:"dichtheid", prop:"dichtheid",
+  micro:["Net als bij bezinken gaat het om <b>dichtheid</b>.", "Door het draaien werkt er een kracht die <b>duizenden keren</b> groter is dan de zwaartekracht.", "Daardoor zakken ook <b>heel kleine deeltjes</b> snel, zoals bloedcellen."],
+  say:"Centrifugeren berust op het verschil in dichtheid tussen de bloedcellen en het bloedplasma.",
+  mix:"Suspensie of emulsie met heel kleine deeltjes, die te langzaam bezinken of door een filter gaan.",
+  get:"Bezinksel stevig onderin het buisje, heldere vloeistof erboven.",
+  ex:"Bloed scheiden in bloedcellen en plasma, room uit melk halen.",
+  tip:["Versneld bezinken","Centrifugeren berust net als bezinken op verschil in dichtheid. Door het snelle draaien gaat het veel sneller."],
+  legend:[["c-sand","deeltje met grotere dichtheid"],["c-water","vloeistof"]],
+  steps:[[0,"Buisjes met het mengsel gaan in de centrifuge, tegenover elkaar zodat hij in balans is."],[.15,"De centrifuge draait duizenden toeren per minuut."],[.35,"Deeltjes met een grotere dichtheid worden naar de buitenkant geslingerd: de bodem van het buisje."],[.82,"Stilstand: het bezinksel zit onderin, de heldere vloeistof kun je afschenken."]], dur:9},
+ {key:"indampen", name:"Indampen", basis:"kookpunt", prop:"kookpunt",
+  micro:["Tussen <b>watermoleculen</b>: vanderwaalsbindingen en waterstofbruggen, relatief zwak → kp 100 °C.", "In <b>keukenzout</b>: Na⁺ en Cl⁻ in een <b>ionrooster</b> met sterke ionbindingen → kp ruim boven 1400 °C.", "Bij verdampen breek je alleen bindingen <b>tussen</b> moleculen, niet de atoombindingen erin."],
+  say:"Indampen berust op het verschil in kookpunt tussen water en zout.",
+  mix:"Oplossing van een vaste stof in een vloeistof (zout in water).",
+  get:"De opgeloste vaste stof blijft achter. Het oplosmiddel verdampt en ben je kwijt.",
+  ex:"Zeezout winnen in zoutpannen, saus inkoken.",
+  tip:["Oplosmiddel kwijt","Wil je het oplosmiddel ook terugwinnen? Dan moet je destilleren."],
+  legend:[["c-water","watermolecuul"],["c-salt","zout"],["c-water","open bolletje = waterdamp",true]],
+  steps:[[0,"Verwarm de zoutoplossing in een indampschaal."],[.12,"Water heeft een veel lager kookpunt dan zout: watermoleculen verdampen."],[.55,"De oplossing wordt steeds geconcentreerder."],[.85,"Al het water is weg: het zout blijft achter als kristallen."]], dur:9},
+ {key:"kristalliseren", name:"(Her)kristalliseren", basis:"oplosbaarheid (bij verschillende temperatuur)", prop:"oplosbaarheid",
+  micro:["Bij <b>hoge temperatuur</b> lossen de meeste vaste stoffen beter op.", "Bij afkoelen raakt de oplossing <b>oververzadigd</b>: de deeltjes vormen een <b>kristalrooster</b>.", "Van de verontreiniging is <b>te weinig</b> om de oplossing te verzadigen: die blijft in de moederloog."],
+  say:"Herkristalliseren berust op het verschil in oplosbaarheid (in koud water) tussen benzoëzuur en de verontreiniging.",
+  mix:"Een onzuivere vaste stof, of een oplossing waaruit je een zuivere vaste stof wilt halen.",
+  get:"Zuivere kristallen (na filtreren het residu) en de moederloog (het filtraat, met de verontreiniging).",
+  ex:"Suiker uit suikerstroop, zuiveren van een geneesmiddel, zout uit pekel.",
+  tip:["Weinig heet oplosmiddel, wassen met koud","Los op in zo weinig mogelijk heet oplosmiddel: hoe meer oplosmiddel, hoe meer stof er na afkoelen opgelost blijft en hoe lager je rendement. Was de kristallen daarna met een beetje koud oplosmiddel."],
+  legend:[["c-salt","deeltje van de gewenste stof"],["c-dye1","deeltje van de verontreiniging"],["c-water","oplosmiddel (niet getekend)"]],
+  steps:[[0,"Los de onzuivere stof op in zo weinig mogelijk heet water."],[.15,"Laat de oplossing langzaam afkoelen. De oplosbaarheid daalt."],[.4,"De oplossing raakt oververzadigd: deeltjes van de gewenste stof vormen een kristalrooster."],[.8,"De verontreiniging blijft opgelost in de moederloog. Filtreer en was de kristallen met koud water."]], dur:10},
+ {key:"destilleren", name:"Destilleren", basis:"kookpunt", prop:"kookpunt",
+  micro:["Ethanol en water vormen allebei <b>waterstofbruggen</b>.", "Een watermolecuul vormt er gemiddeld <b>meer</b> (twee H aan O), ethanol heeft maar <b>één OH-groep</b>.", "Ethanol heeft wel sterkere vanderwaalsbindingen, maar netto wint water: <b>water heeft het hogere kookpunt</b>."],
+  say:"Destilleren berust op het verschil in kookpunt tussen ethanol en water.",
+  mix:"Oplossing, of een mengsel van vloeistoffen die met elkaar mengen.",
+  get:"Destillaat (opgevangen in de erlenmeyer) en residu (blijft in de kolf).",
+  ex:"Sterkedrank stoken, aardolie scheiden (gefractioneerde destillatie), drinkwater uit zeewater.",
+  tip:["Thermometer en koelwater","De thermometer zit ter hoogte van de zijbuis: je meet de temperatuur van de damp die naar de koeler gaat. Het koelwater komt onderin de koeler binnen. In het echt loopt de temperatuur bij een mengsel geleidelijk op en bevat het destillaat ook wat water."],
+  legend:[["c-eth","ethanol (kp 78 °C)"],["c-water","water (kp 100 °C)"],["c-ink","open bolletje = gas",true]],
+  steps:[[0,"Verwarm het mengsel van ethanol (kp 78 °C) en water (kp 100 °C)."],[.15,"Rond 78 °C verdampt vooral ethanol (vereenvoudigd: in het echt stijgt de temperatuur geleidelijk). De damp gaat langs de thermometer de koeler in."],[.35,"In de koeler condenseert de damp. Het destillaat druppelt in de erlenmeyer."],[.8,"De ethanol is op: de temperatuur stijgt richting 100 °C. Tijd voor een nieuw opvangvat."]], dur:11},
+ {key:"gefractioneerd", name:"Gefractioneerde destillatie", basis:"kookpunt (kooktraject)", prop:"kookpunt",
+  micro:["Aardolie = mengsel van vooral <b>alkanen</b>.", "<b>Langere keten</b> → sterkere vanderwaalsbindingen → <b>hoger kookpunt</b>.", "Onderin is het het heetst: <b>lange ketens condenseren onderin</b>, korte bovenin."],
+  say:"Gefractioneerde destillatie berust op het verschil in kookpunt tussen de koolwaterstoffen in aardolie.",
+  mix:"Een mengsel van veel stoffen met verschillende kookpunten, zoals aardolie.",
+  get:"Fracties: groepen stoffen met ongeveer hetzelfde kooktraject (gas, benzine, kerosine, diesel, residu).",
+  ex:"Raffinaderij (aardolie), scheiden van vloeibare lucht in stikstof en zuurstof.",
+  tip:["Fractie = mengsel","Een fractie is géén zuivere stof, maar een mengsel van stoffen met kookpunten die dicht bij elkaar liggen."],
+  legend:[["c-dye2","korte ketens (gas)"],["c-dye3","benzine"],["c-eth","kerosine"],["c-flame","diesel"],["c-carbon","residu (lange ketens)"]],
+  steps:[[0,"Aardolie wordt in een oven verhit tot ongeveer 400 °C en verdampt grotendeels."],[.12,"De damp stijgt op in de kolom. Hoe hoger in de kolom, hoe kouder."],[.35,"Elke stof condenseert op de hoogte waar de temperatuur onder zijn kookpunt komt."],[.8,"Op elke hoogte tap je een fractie af. Het residu met de langste ketens blijft onderin."]], dur:11},
+ {key:"extraheren", name:"Extraheren", basis:"oplosbaarheid", prop:"oplosbaarheid",
+  micro:["Jood (I₂) is <b>apolair</b>; water is <b>polair</b> en vormt waterstofbruggen.", "I₂ kan geen waterstofbruggen vormen: jood is <b>hydrofoob</b> en lost slecht op in water.", "Hexaan is ook <b>apolair</b>: tussen I₂ en hexaan vanderwaalsbindingen → jood lost goed op. <b>Soort zoekt soort.</b>"],
+  say:"Extraheren berust op het verschil in oplosbaarheid van jood in hexaan en in water.",
+  mix:"Mengsel waaruit je één stof haalt met een extractiemiddel waarin die stof goed oplost.",
+  get:"Extract: de stof opgelost in het extractiemiddel. In een scheitrechter tap je daarna de onderlaag af.",
+  ex:"Thee en koffie zetten, cafeïnevrije koffie, jood uit joodwater met hexaan.",
+  tip:["Wassen = ook extraheren","Bij wassen haal je juist de ongewenste stof eruit. In de scheitrechter zit de vloeistof met de kleinste dichtheid boven. Er blijft altijd een beetje jood in het water achter: herhaal de extractie met vers hexaan."],
+  legend:[["c-iodw","jood in water"],["c-iodh","jood in hexaan"]],
+  steps:[[0,"Joodwater: jood lost slecht op in water (bruin)."],[.12,"Voeg hexaan toe. Hexaan mengt niet met water en heeft een kleinere dichtheid: het komt bovenop."],[.28,"Schudden: de vloeistoffen raken vermengd en jood gaat over naar het hexaan."],[.5,"Laten staan: de lagen scheiden weer. Het meeste jood zit nu in het hexaan (paars), een klein beetje blijft in het water."],[.62,"Kraan open: tap de onderlaag (water) af. Het jood zit in de bovenlaag."]], dur:12},
+ {key:"neerslaan", name:"Neerslaan + filtreren", basis:"oplosbaarheid (van zouten)", prop:"oplosbaarheid",
+  micro:["Voeg een ion toe dat met het ongewenste ion een <b>slecht oplosbaar zout</b> vormt (Binas 45A).", "Bijvoorbeeld: <b>Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)</b>. De ionen komen vast te zitten in een ionrooster.", "Na⁺ en Cl⁻ blijven opgelost: <b>tribune-ionen</b>. Het neerslag filtreer je af."],
+  say:"Het neerslaan berust op het verschil in oplosbaarheid tussen bariumsulfaat en de andere zouten. Het filtreren daarna berust op het verschil in deeltjesgrootte.",
+  mix:"Een oplossing waaruit je bepaalde ionen wilt verwijderen.",
+  get:"Een neerslag (residu na filtreren) en een filtraat zonder de ongewenste ionen.",
+  ex:"Fosfaat uit afvalwater halen, zware metalen uit industrieel water, de bariumsulfaatproef op sulfaat.",
+  tip:["Eerst reactie, dan scheiden","Het neerslaan zelf is een chemische reactie. De scheidingsmethode is het filtreren of bezinken daarna. Geef bij een examenvraag de reactievergelijking met toestandsaanduidingen (s) en (aq)."],
+  legend:[["c-salt","SO₄²⁻"],["c-dye3","Ba²⁺"],["c-dye2","Cl⁻"],["c-muted","Na⁺"]],
+  steps:[[0,"Een oplossing van natriumsulfaat: Na⁺- en SO₄²⁻-ionen bewegen vrij door het water."],[.12,"Druppel een oplossing van bariumchloride erbij: Ba²⁺ en Cl⁻ komen erbij."],[.35,"Ba²⁺ en SO₄²⁻ vormen samen vast BaSO₄: de oplossing wordt troebel en het neerslag zakt."],[.78,"Na⁺ en Cl⁻ blijven opgelost. Filtreer: BaSO₄ is het residu."]], dur:10},
+ {key:"adsorberen", name:"Adsorberen", basis:"aanhechtingsvermogen (adsorptievermogen)", prop:"aanhechting",
+  micro:["Actieve kool: bijna zuivere koolstof met een <b>enorm inwendig oppervlak</b> (honderden m² per gram).", "Grote, vaak <b>apolaire</b> kleur- en geurmoleculen hechten met <b>vanderwaalsbindingen</b> aan het oppervlak.", "Kleine <b>polaire</b> watermoleculen hechten nauwelijks: zij vormen liever waterstofbruggen met elkaar."],
+  say:"Adsorberen berust op het verschil in aanhechtingsvermogen aan actieve kool tussen de kleurstof en water.",
+  mix:"Vloeistof of gas met een kleine hoeveelheid kleur-, geur- of smaakstof.",
+  get:"De kleurstof zit vast aan het adsorptiemiddel (actieve kool); de vloeistof is helder.",
+  ex:"Afzuigkap, waterfilterkan, Norit-tabletten, gasmasker.",
+  tip:["Groot oppervlak","Actieve kool is heel poreus: honderden m² oppervlak per gram. Is het oppervlak bezet, dan moet de kool vervangen worden."],
+  legend:[["c-dye1","kleurstofmolecuul"],["c-water","watermolecuul"],["c-carbon","korrel actieve kool"]],
+  steps:[[0,"Giet een kleurstofoplossing op een kolom met actieve kool."],[.2,"Kleurstofmoleculen hechten zich aan het oppervlak van de kool."],[.45,"Watermoleculen hechten nauwelijks en stromen door."],[.8,"Onderin komt helder water. De kleurstof zit vast op de kool."]], dur:9},
+ {key:"chromatografie", name:"Papier- en dunnelaagchromatografie", basis:"aanhechtingsvermogen (aan de stationaire fase) én oplosbaarheid (in de mobiele fase)", prop:"beide",
+  micro:["Papier = <b>cellulose</b> met veel OH-groepen: <b>polair</b>.", "Een <b>polaire</b> kleurstof vormt waterstofbruggen met het papier → hecht sterk → <b>kleine Rf</b>.", "Een minder polaire kleurstof lost beter op in de loopvloeistof → <b>grote Rf</b>. Andere loopvloeistof = andere Rf."],
+  say:"Papierchromatografie berust op het verschil in aanhechtingsvermogen aan het papier en oplosbaarheid in de loopvloeistof tussen de kleurstoffen.",
+  mix:"Kleine hoeveelheden stoffen die veel op elkaar lijken, zoals kleurstoffen.",
+  get:"Een chromatogram met vlekken. Rf = afstand vlek ÷ afstand front.",
+  ex:"Kleurstoffen in snoep of stiften onderzoeken, forensisch onderzoek.",
+  tip:["Startlijn","Zet de startlijn met potlood (grafiet lost niet op) en boven het niveau van de loopvloeistof, anders lossen de vlekken op in de bak."],
+  legend:[["c-dye1","stof 1"],["c-dye2","stof 2 (= X)"],["c-dye3","stof 3 (= Y)"]],
+  steps:[[0,"Zet met potlood een startlijn. Breng vlekjes aan: M = mengsel, X en Y = bekende stoffen."],[.08,"De loopvloeistof (mobiele fase) trekt omhoog door het papier (stationaire fase)."],[.3,"Een stof die sterk hecht aan het papier en slecht oplost in de loopvloeistof, komt minder ver."],[.9,"Bereken Rf = a ÷ b. M bevat X, Y en nog een derde stof."]], dur:10},
+ {key:"gc", name:"Gaschromatografie", basis:"aanhechtingsvermogen aan (of oplosbaarheid in) de stationaire fase én kookpunt", prop:"beide",
+  micro:["<b>Laag kookpunt</b> (zwakke bindingen tussen moleculen) → vooral gasvormig → <b>snel</b> door de kolom.", "<b>Sterk binden</b> aan (of goed oplossen in) de stationaire fase → <b>later</b> uit de kolom.", "Apolaire kolom: volgorde ≈ kookpunt, dus <b>pentaan vóór hexaan vóór heptaan</b>."],
+  say:"Gaschromatografie berust op het verschil in aanhechtingsvermogen aan (of oplosbaarheid in) de stationaire fase en het verschil in kookpunt tussen de stoffen in het mengsel.",
+  mix:"Stoffen die gasvormig worden bij verwarmen; ook heel kleine hoeveelheden.",
+  get:"Een gaschromatogram: retentietijd (welke stof) en piekoppervlak (hoeveel).",
+  ex:"Alcohol in bloed, dopingcontrole, milieuonderzoek.",
+  tip:["Retentietijd en piekoppervlak","Dezelfde retentietijd als een bekende stof (onder dezelfde omstandigheden) wijst op dezelfde stof. Het piekoppervlak is een maat voor de hoeveelheid van die stof."],
+  legend:[["c-dye3","stof A"],["c-dye1","stof B"],["c-dye2","stof C"]],
+  steps:[[0,"Het mengsel wordt ingespoten en verdampt. Een draaggas (bijv. helium) is de mobiele fase."],[.1,"In de kolom hecht elke stof anders aan de stationaire fase. Sterk hechten = langzaam."],[.3,"Verlaat een stof de kolom, dan geeft de detector een piek. Retentietijd = tijd van inspuiten tot piek."],[.85,"Retentietijd: wélke stof. Piekoppervlak: hoevéél van die stof."]], dur:11}
+];
+const PROPS = [
+ {id:"grootte", name:"Deeltjesgrootte", color:"--c-sand", text:"Grote deeltjes blijven achter, kleine gaan erdoor."},
+ {id:"dichtheid", name:"Dichtheid", color:"--c-water", text:"Stoffen met een grote dichtheid zakken naar beneden."},
+ {id:"kookpunt", name:"Kookpunt", color:"--c-flame", text:"De stof met het laagste kookpunt verdampt het eerst. Op microniveau: zwakkere bindingen tussen de moleculen."},
+ {id:"oplosbaarheid", name:"Oplosbaarheid", color:"--c-iodh", text:"Een stof lost beter op in het ene oplosmiddel dan in het andere, lost slechter op bij lage temperatuur, of vormt een slecht oplosbaar zout."},
+ {id:"aanhechting", name:"Aanhechtingsvermogen", color:"--c-carbon", text:"Sommige stoffen hechten zich aan het oppervlak van een vaste stof."},
+ {id:"beide", name:"Aanhechting + oplosbaarheid of kookpunt", color:"--c-dye1", text:"Papier/DLC: hechten aan de stationaire fase tegenover oplossen in de loopvloeistof. GC: hechten aan de stationaire fase en kookpunt."}
+];
+const TRAPS = [
+ ["Filtreren berust op verschil in oplosbaarheid.","Filtreren berust op verschil in deeltjesgrootte. Zand lost niet op en blijft dus uit grote korrels bestaan; het filter scheidt op grootte."],
+ ["Bij indampen vang je het water op.","Bij indampen verdwijnt het oplosmiddel in de lucht. Opvangen = destilleren."],
+ ["Filtraat en residu door elkaar halen.","Residu = wat achterblijft (op het filter of in de kolf). Filtraat = wat door het filter gaat. Destillaat = wat je opvangt na de koeler."],
+ ["De zwaarste vloeistof zit boven in de scheitrechter.","De vloeistof met de kleinste dichtheid zit boven. Kijk de dichtheden na in Binas."],
+ ["Papierchromatografie berust alleen op oplosbaarheid.","Noem allebei: verschil in aanhechtingsvermogen aan de stationaire fase én oplosbaarheid in de loopvloeistof (mobiele fase). Bij GC: aanhechting en kookpunt."],
+ ["Rf = afstand front ÷ afstand vlek.","Rf = afstand vlek ÷ afstand front, gemeten vanaf de startlijn. Rf heeft geen eenheid en ligt tussen 0 en 1."],
+ ["Grote retentietijd = slecht hechtende stof.","Andersom: een stof die sterk hecht aan de stationaire fase, komt later uit de kolom en heeft een grotere retentietijd."],
+ ["Een piek met een groot oppervlak = een stof met een grote retentietijd.","Piekoppervlak zegt iets over de hoeveelheid, retentietijd over welke stof. Vergelijk hoeveelheden met een standaard van dezelfde stof."],
+ ["„Water kookt hoger, want het heeft sterkere bindingen.”","Te vaag voor vwo. Noem welke bindingen: tussen de moleculen (vanderwaalsbindingen en waterstofbruggen), niet de atoombindingen in het molecuul. Bij koken blijven de moleculen heel."],
+ ["„Jood lost op in hexaan omdat hexaan een goed oplosmiddel is.”","Leg het uit met polariteit: jood en hexaan zijn allebei apolair (hydrofoob); jood kan geen waterstofbruggen vormen met water."],
+ ["Kristalliseren berust op verschil in kookpunt.","Kristalliseren berust op verschil in oplosbaarheid (bij lage temperatuur) tussen de gewenste stof en de verontreiniging. Er kookt niets."],
+ ["„Ik scheid de sulfaationen af met bariumchloride.”","Bariumchloride laat sulfaat neerslaan (reactie). De scheiding is daarna het filtreren of bezinken. Noem beide stappen en geef de reactievergelijking met (s) en (aq)."],
+ ["In een blokschema alleen de methode noemen.","Zet bij elke pijl welke stoffen erin zitten en noem bij elk S-blok de methode én waar die op berust. Vergeet de recyclestroom niet."]
+];
+
+/* ====================== HELPERS ====================== */
+const $ = s=>document.querySelector(s);
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+function pathAt(pts,p){
+  let tot=0;const L=[];
+  for(let i=1;i<pts.length;i++){const d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);L.push(d);tot+=d;}
+  let d=clamp(p)*tot;
+  for(let i=0;i<L.length;i++){
+    if(d<=L[i]&&L[i]>0){const f=d/L[i];return[lerp(pts[i][0],pts[i+1][0],f),lerp(pts[i][1],pts[i+1][1],f)];}
+    d-=L[i];
+  }
+  return pts[pts.length-1].slice();
+}
+let C={};
+function readColors(){
+  const s=getComputedStyle(document.documentElement);
+  ["water","sand","salt","dye1","dye2","dye3","eth","carbon","flame","glass","liquid","hex","iodw","iodh","paper","ink","muted"].forEach(k=>C[k]=s.getPropertyValue("--c-"+k).trim());
+  C.surface2=s.getPropertyValue("--surface-2").trim();
+  C.accent=s.getPropertyValue("--accent").trim();
+}
+
+/* ====================== CANVAS ====================== */
+const W=640,H=400;
+const cv=$("#cv"), ctx=cv.getContext("2d");
+let LBL=14, NOW=0;
+function sizeCanvas(){
+  const w=cv.clientWidth||640, dpr=Math.min(window.devicePixelRatio||1,2.5);
+  cv.width=Math.round(w*dpr); cv.height=Math.round(w*0.625*dpr);
+  LBL=clamp(13.5*640/w,13.5,24);
+}
+function dot(x,y,r,c,a=1){ctx.globalAlpha=a;ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.fill();ctx.globalAlpha=1;}
+function ring(x,y,r,c,a=1){ctx.globalAlpha=a;ctx.strokeStyle=c;ctx.lineWidth=1.8;ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.stroke();ctx.globalAlpha=1;}
+function label(txt,x,y,align="left",col,a=1,bold=true){
+  ctx.globalAlpha=a;ctx.font=(bold?"700 ":"400 ")+LBL+'px "Atkinson Hyperlegible", system-ui, sans-serif';
+  ctx.textAlign=align==="middle"?"center":align;ctx.textBaseline="middle";
+  const w=ctx.measureText(txt).width;
+  if(align==="left")x=clamp(x,4,W-4-w);else if(align==="right")x=clamp(x,4+w,W-4);else x=clamp(x,4+w/2,W-4-w/2);
+  // halo for legibility
+  ctx.lineWidth=4;ctx.strokeStyle=C.surface2;ctx.lineJoin="round";ctx.strokeText(txt,x,y);
+  ctx.fillStyle=col||C.ink;ctx.fillText(txt,x,y);ctx.globalAlpha=1;
+}
+function leader(x1,y1,x2,y2,a=1){ctx.globalAlpha=a;ctx.strokeStyle=C.muted;ctx.lineWidth=1.2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;}
+function glass(w=3){ctx.strokeStyle=C.glass;ctx.lineWidth=w;ctx.lineJoin="round";ctx.lineCap="round";}
+function beaker(x,y,w,h,level,fill){
+  if(level>0){ctx.fillStyle=fill||C.liquid;ctx.fillRect(x+1.5,y+h-level*h,w-3,level*h-1.5);}
+  glass();ctx.beginPath();ctx.moveTo(x-7,y-2);ctx.lineTo(x,y+5);ctx.lineTo(x,y+h-6);ctx.quadraticCurveTo(x,y+h,x+6,y+h);
+  ctx.lineTo(x+w-6,y+h);ctx.quadraticCurveTo(x+w,y+h,x+w,y+h-6);ctx.lineTo(x+w,y);ctx.stroke();
+}
+function flame(x,y,s=1,on=1){
+  if(on<=0)return;
+  const f=1+.09*Math.sin(NOW/70)+.05*Math.sin(NOW/37);
+  ctx.save();ctx.translate(x,y);ctx.scale(s,s*f);ctx.globalAlpha=on;
+  ctx.fillStyle=C.flame;ctx.beginPath();ctx.moveTo(0,-34);ctx.bezierCurveTo(14,-14,13,0,0,0);ctx.bezierCurveTo(-13,0,-14,-14,0,-34);ctx.fill();
+  ctx.fillStyle=C.water;ctx.globalAlpha=on*.8;ctx.beginPath();ctx.moveTo(0,-16);ctx.bezierCurveTo(6,-7,6,0,0,0);ctx.bezierCurveTo(-6,0,-6,-7,0,-16);ctx.fill();
+  ctx.restore();ctx.globalAlpha=1;
+}
+function burner(x,y){ // y = top of burner tube
+  ctx.fillStyle=C.glass;ctx.globalAlpha=.55;ctx.fillRect(x-8,y,16,58);ctx.fillRect(x-24,y+58,48,8);ctx.globalAlpha=1;
+}
+function arrow(x1,y1,x2,y2,c){ctx.strokeStyle=c||C.muted;ctx.fillStyle=c||C.muted;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+  const a=Math.atan2(y2-y1,x2-x1);ctx.beginPath();ctx.moveTo(x2,y2);ctx.lineTo(x2-9*Math.cos(a-.45),y2-9*Math.sin(a-.45));ctx.lineTo(x2-9*Math.cos(a+.45),y2-9*Math.sin(a+.45));ctx.closePath();ctx.fill();}
+
+/* ---------- 1 FILTREREN ---------- */
+const SIM={};
+SIM.filtreren={
+  make(){const r=rng(7);this.sand=[];
+    for(let row=0;this.sand.length<34;row++){const y=188-row*10;const hw=Math.max(0,(195-y)/1.3-7);const n=hw<6?1:Math.floor(2*hw/11)+1;
+      for(let i=0;i<n&&this.sand.length<34;i++){const x=n===1?320:320-hw+i*(2*hw/(n-1));this.sand.push({rest:[x,y],st:[235+r()*170,-15-r()*140],d:r()*.42,rad:4.6+r()*1.4});}}
+    const mk=(n,rad)=>{const a=[];for(let i=0;i<n;i++){const d=r()*.5;const xm=320+(r()-.5)*90;a.push({d,rad,pts:null,xm,st:[235+r()*170,-10-r()*150],j:r()});}a.sort((p,q)=>p.d-q.d);
+      a.forEach((p,i)=>{const ry=386-(i/n)*52-r()*5;p.pts=[p.st,[p.st[0],60],[p.xm,140],[320+(r()-.5)*14,205],[320,256],[248+r()*144,Math.max(ry,330)]];});return a;};
+    this.water=mk(56,2.5);this.salt=mk(14,2.6);},
+  draw(t){
+    let arrived=0;const all=this.water.length+this.salt.length;
+    [...this.water,...this.salt].forEach(p=>{if(seg(t,p.d,p.d+.42)>=1)arrived++;});
+    beaker(240,268,160,122,(arrived/all)*.5);
+    // funnel
+    glass();ctx.beginPath();ctx.moveTo(206,58);ctx.lineTo(306,200);ctx.lineTo(306,258);ctx.moveTo(434,58);ctx.lineTo(334,200);ctx.lineTo(334,258);ctx.stroke();
+    // filter paper with pores
+    ctx.strokeStyle=C.muted;ctx.lineWidth=2.2;ctx.setLineDash([5,3]);ctx.beginPath();ctx.moveTo(222,62);ctx.lineTo(320,193);ctx.lineTo(418,62);ctx.stroke();ctx.setLineDash([]);
+    this.water.forEach(p=>{const q=ease(seg(t,p.d,p.d+.42));if(q<=0)return;const [x,y]=pathAt(p.pts,q);dot(x,y,p.rad,C.water,.9);});
+    this.salt.forEach(p=>{const q=ease(seg(t,p.d,p.d+.42));if(q<=0)return;const [x,y]=pathAt(p.pts,q);dot(x,y,p.rad,C.salt);});
+    this.sand.forEach(p=>{const q=ease(seg(t,p.d,p.d+.36));if(q<=0)return;const [x,y]=pathAt([p.st,[p.rest[0],62],p.rest],q);dot(x,y,p.rad,C.sand);});
+    label("filtreerpapier",452,90,"left");leader(448,90,404,82);
+    label("trechter",160,140,"right");leader(166,140,248,120);
+    const a=seg(t,.72,.85);
+    label("residu",470,160,"left",null,a);leader(466,160,350,165,a);
+    label("filtraat",420,345,"left",null,a);leader(416,345,385,350,a);
+  }};
+
+/* ---------- 2 BEZINKEN ---------- */
+SIM.bezinken={
+  make(){const r=rng(11);this.p=[];const n=48;
+    for(let i=0;i<n;i++){const row=Math.floor(i/16),col=i%16;this.p.push({st:[130+r()*140,215+r()*135],rest:[133+col*8.8+(row%2)*4,354-row*7],d:r()*.08,u:.18+r()*.32});}},
+  draw(t){
+    const p2=ease(seg(t,.62,.95));
+    const topA=lerp(209,328,p2), hB=121*p2;
+    // A liquid
+    ctx.fillStyle=C.liquid;ctx.fillRect(121.5,topA,157,360-topA-1.5);
+    const murk=1-ease(seg(t,.1,.55));ctx.globalAlpha=.22*murk;ctx.fillStyle=C.sand;ctx.fillRect(121.5,209,157,150);ctx.globalAlpha=1;
+    beaker(120,150,160,210,0);
+    beaker(380,190,160,170,hB/170);
+    // glass rod + stream
+    if(t>.6&&t<.97){const a=seg(t,.6,.66)*(1-seg(t,.92,.97));ctx.globalAlpha=a;glass(4);ctx.beginPath();ctx.moveTo(262,130);ctx.lineTo(420,300);ctx.stroke();
+      ctx.strokeStyle=C.water;ctx.lineWidth=5;ctx.globalAlpha=a*.55;ctx.beginPath();ctx.moveTo(281,151);ctx.lineTo(418,300);ctx.stroke();ctx.globalAlpha=1;}
+    this.p.forEach(q=>{const k=ease(seg(t,q.d,q.d+q.u));const [x,y]=[lerp(q.st[0],q.rest[0],k),lerp(q.st[1],q.rest[1],k)];dot(x,y,3.6,C.sand);});
+    label("troebel mengsel",120,120,"left",null,1-seg(t,.15,.3));
+    const a=seg(t,.5,.6);label("bezinksel",200,384,"middle",null,a);
+    const b=seg(t,.66,.75);label("decanteren",462,150,"middle",null,b);label("(afschenken)",462,172,"middle",null,b,false);
+  }};
+
+/* ---------- 3 CENTRIFUGEREN ---------- */
+SIM.centrifugeren={
+  make(){const r=rng(5);this.tubes=[0,1,2,3].map(()=>{const a=[];for(let i=0;i<12;i++)a.push({st:[48+r()*56,(r()-.5)*14],rest:[104-Math.floor(i/3)*5.2,-6+(i%3)*6]});return a;});
+    this.side=[];for(let i=0;i<22;i++)this.side.push({st:[456+r()*28,135+r()*180],rest:[458+(i%5)*6,318-Math.floor(i/5)*6]});},
+  theta(t){const K=2*Math.PI*14;let v;if(t<.2)v=t*t/.4;else if(t<.8)v=.1+(t-.2);else v=.7+(.04-(1-t)*(1-t))/.4;return K*v;},
+  speed(t){return t<.2?t/.2:t>.8?(1-t)/.2:1;},
+  draw(t){
+    const cx=200,cy=205,th=this.theta(t),sp=this.speed(t),k=ease(seg(t,.18,.75));
+    ctx.fillStyle=C.surface2;ctx.strokeStyle=C.glass;ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(cx,cy,128,0,6.2832);ctx.stroke();
+    if(sp>.15){ctx.globalAlpha=.25*sp;ctx.strokeStyle=C.muted;ctx.lineWidth=12;ctx.beginPath();ctx.arc(cx,cy,75,0,6.2832);ctx.stroke();ctx.globalAlpha=1;}
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(th);
+    this.tubes.forEach((tube,i)=>{ctx.save();ctx.rotate(i*Math.PI/2);
+      ctx.fillStyle=C.liquid;ctx.fillRect(40,-11,72,22);glass(2.5);ctx.beginPath();ctx.moveTo(38,-11);ctx.lineTo(104,-11);ctx.arc(104,0,11,-Math.PI/2,Math.PI/2);ctx.lineTo(38,11);ctx.stroke();
+      tube.forEach(q=>{dot(lerp(q.st[0],q.rest[0],k),lerp(q.st[1],q.rest[1],k),2.8,C.sand);});
+      ctx.restore();});
+    ctx.restore();
+    ctx.fillStyle=C.glass;ctx.beginPath();ctx.arc(cx,cy,9,0,6.2832);ctx.fill();
+    // side tube
+    ctx.fillStyle=C.liquid;ctx.fillRect(451,120,38,195);ctx.beginPath();ctx.arc(470,315,19,0,Math.PI);ctx.fill();
+    glass(2.5);ctx.beginPath();ctx.moveTo(450,90);ctx.lineTo(450,315);ctx.arc(470,315,20,Math.PI,0,true);ctx.lineTo(490,90);ctx.stroke();
+    this.side.forEach(q=>dot(lerp(q.st[0],q.rest[0],k),lerp(q.st[1],q.rest[1],k),2.8,C.sand));
+    label("bovenaanzicht",cx,368,"middle",C.muted,1,false);label("zijaanzicht",470,368,"middle",C.muted,1,false);
+    label(Math.round(sp*4000)+" toeren/min",cx,24,"middle");
+    const a=seg(t,.78,.88);label("bezinksel",500,318,"left",null,a);label("helder",500,170,"left",null,a);
+  }};
+
+/* ---------- 4 INDAMPEN ---------- */
+SIM.indampen={
+  bowlY(x){const u=clamp((x-190)/260);return 190+220*u*(1-u);},
+  make(){const r=rng(3);this.w=[];this.s=[];
+    for(let i=0;i<46;i++){const x=215+r()*210;const y=207+r()*(this.bowlY(x)-212);this.w.push({x,y,ph:r()*6,dx:(r()-.5)*40});}
+    for(let i=0;i<20;i++){const x=240+r()*160;const y=212+r()*(this.bowlY(x)-218);this.s.push({x,y,cx:296+(i%7)*7+(r()-.5)*2,cy:240-Math.floor(i/7)*6,rot:r()*1.5});}},
+  draw(t){
+    const yL=lerp(205,243,seg(t,.1,.85));
+    // liquid
+    ctx.save();ctx.beginPath();ctx.moveTo(190,190);ctx.quadraticCurveTo(320,300,450,190);ctx.closePath();ctx.clip();
+    ctx.fillStyle=C.liquid;ctx.fillRect(180,yL,280,80);ctx.restore();
+    // bowl
+    glass(3.5);ctx.beginPath();ctx.moveTo(184,186);ctx.quadraticCurveTo(320,302,456,186);ctx.stroke();
+    // gauze + tripod
+    ctx.strokeStyle=C.muted;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(220,252);ctx.lineTo(420,252);ctx.moveTo(236,252);ctx.lineTo(218,372);ctx.moveTo(404,252);ctx.lineTo(422,372);ctx.stroke();
+    burner(320,318);flame(320,312,1.2,1-seg(t,.9,.96));
+    // water molecules
+    this.w.forEach(p=>{const te=.1+.75*clamp((p.y-205)/38);if(t<te){dot(p.x+Math.sin(NOW/400+p.ph)*1.5,p.y,2.4,C.water,.9);}
+      else{const u=(t-te)*9;if(u>1)return;ring(p.x+p.dx*u,lerp(p.y,-10,u),2.6,C.water,1-u);}});
+    const k=ease(seg(t,.82,.97));
+    this.s.forEach(p=>{let y=Math.max(p.y,yL+4);const by=this.bowlY(p.x)-4;y=Math.min(y,by);const x=lerp(p.x,p.cx,k);y=lerp(y,p.cy,k);
+      if(k>.5){ctx.save();ctx.translate(x,y);ctx.rotate(p.rot);ctx.fillStyle=C.salt;ctx.fillRect(-3.2,-3.2,6.4,6.4);ctx.restore();}else dot(x,y,2.6,C.salt);});
+    const a=seg(t,.15,.25)*(1-seg(t,.88,.95));label("waterdamp ontsnapt",480,60,"left",null,a);
+    label("indampschaal",470,200,"left");leader(466,200,440,200);
+    const b=seg(t,.85,.95);label("zout blijft achter",320,160,"middle",null,b);leader(320,172,320,232,b);
+  }};
+
+/* ---------- 5 DESTILLEREN ---------- */
+SIM.destilleren={
+  make(){const r=rng(9);this.g=[];this.b=[];
+    const inFlask=()=>{let x,y;do{x=140+(r()-.5)*110;y=262+r()*60;}while(Math.hypot(x-140,y-272)>54);return[x,y];};
+    const rx=(i)=>[480+((i*13)%46)-6,372-Math.floor(i/6)*5-r()*2];
+    for(let i=0;i<26;i++){const s=inFlask();this.g.push({s,tl:.16+.6*i/26,ph:r()*6,rest:rx(i)});}
+    for(let i=0;i<26;i++){const s=inFlask();this.b.push({s,tl:i<2?.5+i*.18:9,ph:r()*6,rest:rx(26+i)});}
+    this.route=[[140,206],[140,150],[200,168],[480,262],[495,296]];},
+  temp(t){return t<.15?lerp(20,78,ease(t/.15)):t<.8?78:lerp(78,100,ease(seg(t,.8,1)));},
+  draw(t){
+    // flask liquid
+    const lev=lerp(255,280,seg(t,.15,.8));
+    ctx.save();ctx.beginPath();ctx.arc(140,272,60,0,6.2832);ctx.clip();ctx.fillStyle=C.liquid;ctx.fillRect(70,lev,140,80);ctx.restore();
+    glass();ctx.beginPath();ctx.moveTo(128,215);ctx.arc(140,272,60,-Math.PI/2-.2,-Math.PI/2+.2+2*Math.PI-0.0001,false);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(128,216);ctx.lineTo(128,112);ctx.moveTo(152,216);ctx.lineTo(152,160);ctx.stroke();
+    // side arm + condenser inner tube
+    ctx.beginPath();ctx.moveTo(152,140);ctx.lineTo(205,160);ctx.lineTo(480,256);ctx.moveTo(152,160);ctx.lineTo(200,177);ctx.lineTo(478,272);ctx.lineTo(492,300);ctx.moveTo(480,256);ctx.lineTo(498,296);ctx.stroke();
+    // jacket
+    const ang=Math.atan2(96,275),nx=-Math.sin(ang),ny=Math.cos(ang);
+    ctx.save();ctx.globalAlpha=.35;ctx.fillStyle=C.water;ctx.beginPath();
+    const p1=[225,174],p2=[455,255];ctx.moveTo(p1[0]+nx*-20,p1[1]+ny*-20);ctx.lineTo(p2[0]+nx*-20,p2[1]+ny*-20);ctx.lineTo(p2[0]+nx*24,p2[1]+ny*24);ctx.lineTo(p1[0]+nx*24,p1[1]+ny*24);ctx.closePath();ctx.fill();ctx.restore();
+    glass(2.5);ctx.beginPath();ctx.moveTo(p1[0]+nx*-20,p1[1]+ny*-20);ctx.lineTo(p2[0]+nx*-20,p2[1]+ny*-20);ctx.lineTo(p2[0]+nx*24,p2[1]+ny*24);ctx.lineTo(p1[0]+nx*24,p1[1]+ny*24);ctx.closePath();ctx.stroke();
+    // hoses
+    arrow(420,326,420,274,C.water);label("koelwater in",420,342,"right",null,1,false);
+    arrow(272,172,272,132,C.water);label("koelwater uit",280,120,"left",null,1,false);
+    // thermometer
+    ctx.strokeStyle=C.muted;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(140,52);ctx.lineTo(140,146);ctx.stroke();
+    ctx.fillStyle=C.dye1;ctx.beginPath();ctx.arc(140,150,5,0,6.2832);ctx.fill();
+    const T=this.temp(t);ctx.strokeStyle=C.dye1;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(140,146);ctx.lineTo(140,146-T*.8);ctx.stroke();
+    ctx.fillStyle=C.surface2;ctx.fillRect(28,28,100,34);ctx.strokeStyle=C.muted;ctx.lineWidth=1;ctx.strokeRect(28,28,100,34);
+    label(Math.round(T)+" °C",78,45,"middle");
+    // receiver erlenmeyer
+    const got=this.g.filter(q=>t>q.tl+.13).length+this.b.filter(q=>t>q.tl+.13).length;
+    ctx.save();ctx.beginPath();ctx.moveTo(486,300);ctx.lineTo(486,320);ctx.lineTo(452,384);ctx.lineTo(548,384);ctx.lineTo(514,320);ctx.lineTo(514,300);ctx.closePath();ctx.clip();
+    ctx.fillStyle=C.liquid;ctx.fillRect(440,384-got*1.4,120,got*1.4);ctx.restore();
+    glass();ctx.beginPath();ctx.moveTo(486,296);ctx.lineTo(486,320);ctx.lineTo(452,384);ctx.lineTo(548,384);ctx.lineTo(514,320);ctx.lineTo(514,296);ctx.stroke();
+    flame(140,372,1,1-seg(t,.97,1));
+    const mol=(q,col)=>{const u=seg(t,q.tl,q.tl+.13);
+      if(u<=0){dot(q.s[0]+Math.sin(NOW/300+q.ph)*1.5,lerp(lev+5,322,clamp((q.s[1]-262)/60)),2.8,col);return;}
+      if(u>=1){dot(q.rest[0],q.rest[1],2.8,col);return;}
+      const pts=[q.s,...this.route];const [x,y]=pathAt(pts,u);
+      if(u<.55)ring(x,y,3,col);else dot(x,y,2.8,col);};
+    this.b.forEach(q=>mol(q,C.water));this.g.forEach(q=>mol(q,C.eth));
+    label("koeler",340,256,"middle");
+    label("destillaat",448,372,"right",null,seg(t,.4,.5));
+    label("residu",74,300,"right",null,1,false);
+    label("thermometer",150,80,"left",null,1,false);
+  }};
+
+/* ---------- 6 EXTRAHEREN ---------- */
+SIM.extraheren={
+  w(y){if(y<55)return 12;if(y<120)return 12+66*Math.sin((y-55)/65*Math.PI/2);if(y<160)return 78;return Math.max(8,78-70*(y-160)/120);},
+  make(){const r=rng(21);this.i=[];for(let k=0;k<24;k++)this.i.push({fw:.15+r()*.8,fh:.12+r()*.76,gx:(r()-.5)*1.5,ph:r()*6,sp:1+r(),stay:k<3});},
+  area(a,b){let s=0;for(let y=a;y<b;y+=1)s+=2*this.w(y);return s;},
+  fill(y1,y2,col){if(y2<=y1)return;ctx.fillStyle=col;ctx.beginPath();for(let y=y1;y<=y2;y+=2)ctx.lineTo(320-this.w(y),y);for(let y=y2;y>=y1;y-=2)ctx.lineTo(320+this.w(y),y);ctx.closePath();ctx.fill();},
+  draw(t){
+    const add=ease(seg(t,.12,.27)), shake=seg(t,.29,.33)*(1-seg(t,.46,.5)), mixP=ease(seg(t,.29,.6)), drain=ease(seg(t,.64,.93));
+    const yI=lerp(200,280,drain); let yH=lerp(200,135,add);
+    if(drain>0){const V=this.area(135,200);let lo=40,hi=yI;for(let k=0;k<30;k++){const m=(lo+hi)/2;if(this.area(m,yI)>V)lo=m;else hi=m;}yH=(lo+hi)/2;}
+    const ang=shake*Math.sin(NOW/60)*.13;
+    // beaker below
+    beaker(255,318,130,76,drain*.42);
+    ctx.save();ctx.translate(320,170);ctx.rotate(ang);ctx.translate(-320,-170);
+    const sep=1-Math.min(1,shake*1.6);
+    // water layer (bottom), hexane layer (top)
+    if(sep<.99){this.fill(yH,280,C.hex);}
+    this.fill(yI,280,C.liquid);
+    ctx.globalAlpha=lerp(.25,.04,mixP);this.fill(yI,280,C.iodw);ctx.globalAlpha=1;
+    this.fill(yH,yI,C.hex);ctx.globalAlpha=.18*mixP;this.fill(yH,yI,C.iodh);ctx.globalAlpha=1;
+    if(yI<279){ctx.strokeStyle=C.muted;ctx.lineWidth=1.2;ctx.globalAlpha=sep;ctx.beginPath();ctx.moveTo(320-this.w(yI),yI);ctx.lineTo(320+this.w(yI),yI);ctx.stroke();ctx.globalAlpha=1;}
+    // outline
+    glass();ctx.beginPath();for(let y=30;y<=282;y+=2)ctx.lineTo(320-this.w(y),y);ctx.lineTo(312,296);ctx.lineTo(316,330);ctx.moveTo(320+this.w(30),30);for(let y=30;y<=282;y+=2)ctx.lineTo(320+this.w(y),y);ctx.lineTo(328,296);ctx.lineTo(324,330);ctx.stroke();
+    // stopcock
+    ctx.fillStyle=C.glass;ctx.fillRect(300,284,40,9);ctx.save();ctx.translate(345,288);ctx.rotate(drain>0&&drain<1?0:Math.PI/2);ctx.fillRect(-3,-12,6,24);ctx.restore();
+    // iodine particles
+    this.i.forEach(p=>{
+      const yw=yI+p.fh*(280-yI), xw=320+p.gx*this.w(yw)*.6;
+      const top=lerp(200,135,add);const yh=yH+p.fh*(yI-yH), xh=320+p.gx*this.w(yh)*.75;
+      const mp=p.stay?0:mixP;if(p.stay&&drain>.05)return;
+      let x=lerp(xw,xh,mp), y=lerp(yw,yh,mp);
+      if(shake>0){x+=Math.sin(NOW/90*p.sp+p.ph)*14*shake;y+=Math.cos(NOW/110*p.sp+p.ph)*18*shake;}
+      dot(x,y,3.2,mp<.5?C.iodw:C.iodh);});
+    ctx.restore();
+    // pour stream of hexane
+    if(t>.11&&t<.28){ctx.strokeStyle=C.glass;ctx.globalAlpha=.6;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(320,0);ctx.lineTo(320,lerp(200,135,add));ctx.stroke();ctx.globalAlpha=1;}
+    if(drain>0&&drain<1){ctx.strokeStyle=C.water;ctx.globalAlpha=.6;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(320,330);ctx.lineTo(320,392-drain*30);ctx.stroke();ctx.globalAlpha=1;}
+    const a=seg(t,.18,.25)*(1-shake);
+    label("hexaan",420,(yH+yI)/2-9,"left",null,a);label("ρ = 0,66 g/cm³",420,(yH+yI)/2+11,"left",C.muted,a,false);
+    if(yI<275){const b=1-shake;label("water",420,(yI+280)/2-9,"left",null,b);label("ρ = 1,00 g/cm³",420,(yI+280)/2+11,"left",C.muted,b,false);}
+    label("scheitrechter",210,60,"right",null,1,false);
+    label("kraan",290,289,"right",null,1,false);
+    label("schudden!",170,170,"middle",C.accent,shake);
+    label("onderlaag aftappen",400,366,"left",null,seg(t,.66,.72));
+  }};
+
+/* ---------- 7 ADSORBEREN ---------- */
+SIM.adsorberen={
+  make(){const r=rng(13);this.gr=[];let tries=0;while(this.gr.length<20&&tries<900){tries++;const x=292+r()*56,y=132+r()*160,rad=7+r()*3;
+      if(this.gr.every(g=>Math.hypot(g.x-x,g.y-y)>g.r+rad+2))this.gr.push({x,y,r:rad,pts:Array.from({length:9},()=>.78+r()*.3)});}
+    this.d=[];for(let i=0;i<18;i++){const g=this.gr[Math.floor(r()*this.gr.length)];const a=r()*6.28;this.d.push({st:[296+r()*48,-20-r()*110],cap:[g.x+Math.cos(a)*(g.r+3),g.y+Math.sin(a)*(g.r+3)],d:r()*.42});}
+    this.w=[];for(let i=0;i<40;i++){const x=296+r()*48,wg=(r()-.5)*26;this.w.push({pts:[[x,-10-r()*120],[x,130],[clamp(x+wg,292,348),210],[clamp(x-wg,292,348),290],[320,318],[264+r()*112,388-r()*24]],d:r()*.45});}},
+  draw(t){
+    // column
+    const top=ease(seg(t,0,.15))*(1-ease(seg(t,.55,.8)));
+    ctx.fillStyle=C.liquid;ctx.fillRect(287,60,66,240);
+    ctx.globalAlpha=.22*(1-seg(t,.35,.75));ctx.fillStyle=C.dye1;ctx.fillRect(287,60,66,72);ctx.globalAlpha=1;
+    this.gr.forEach(g=>{ctx.fillStyle=C.carbon;ctx.beginPath();g.pts.forEach((f,i)=>{const a=i/g.pts.length*6.283;ctx.lineTo(g.x+Math.cos(a)*g.r*f,g.y+Math.sin(a)*g.r*f);});ctx.closePath();ctx.fill();});
+    glass();ctx.beginPath();ctx.moveTo(285,40);ctx.lineTo(285,300);ctx.lineTo(316,322);ctx.lineTo(316,334);ctx.moveTo(355,40);ctx.lineTo(355,300);ctx.lineTo(324,322);ctx.lineTo(324,334);ctx.stroke();
+    let got=0;
+    this.w.forEach(p=>{const q=ease(seg(t,p.d,p.d+.42));if(q<=0)return;if(q>=1)got++;const [x,y]=pathAt(p.pts,q);dot(x,y,2.4,C.water,.9);});
+    beaker(254,330,132,62,(got/40)*.45);
+    let cap=0;
+    this.d.forEach(p=>{const q=ease(seg(t,p.d,p.d+.32));if(q<=0)return;if(q>=1)cap++;const [x,y]=pathAt([p.st,[p.st[0],120],p.cap],q);dot(x,y,3.4,C.dye1);});
+    // inset
+    const ix=520,iy=170,ir=82;ctx.save();ctx.beginPath();ctx.arc(ix,iy,ir,0,6.2832);ctx.fillStyle=C.surface2;ctx.fill();ctx.clip();
+    ctx.fillStyle=C.carbon;ctx.beginPath();for(let i=0;i<14;i++){const a=i/14*6.283,f=.8+.2*Math.sin(i*2.7);ctx.lineTo(ix+Math.cos(a)*55*f,iy+Math.sin(a)*55*f);}ctx.closePath();ctx.fill();
+    ctx.strokeStyle=C.surface2;ctx.lineWidth=3;[[-30,-10,10,6],[5,-35,-6,20],[-10,20,30,10],[20,-5,40,-20]].forEach(c=>{ctx.beginPath();ctx.moveTo(ix+c[0],iy+c[1]);ctx.lineTo(ix+c[2],iy+c[3]);ctx.stroke();});
+    const n=Math.round(cap/18*26);for(let i=0;i<n;i++){const a=i/26*6.283,f=.8+.2*Math.sin(i*14/26*2.7*1.0);dot(ix+Math.cos(a)*(55*.95+4),iy+Math.sin(a)*(55*.95+4),3.6,C.dye1);}
+    ctx.restore();ctx.strokeStyle=C.muted;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(ix,iy,ir,0,6.2832);ctx.stroke();
+    leader(352,200,ix-ir,iy+15);
+    label("ingezoomd",ix,iy+ir+18,"middle",C.muted,1,false);
+    label("actieve kool",200,210,"right");leader(206,210,290,210);
+    label("kleurloos water",200,370,"right",null,seg(t,.5,.6));leader(206,370,256,370,seg(t,.5,.6));
+    label("kleurstof",200,72,"right",null,1-seg(t,.4,.55));label("in water",200,96,"right",null,1-seg(t,.4,.55),false);
+  }};
+
+/* ---------- 8 CHROMATOGRAFIE ---------- */
+SIM.chromatografie={
+  make(){},
+  draw(t){
+    // jar
+    ctx.fillStyle=C.liquid;ctx.fillRect(172,350,296,40);
+    glass();ctx.beginPath();ctx.moveTo(170,52);ctx.lineTo(170,384);ctx.quadraticCurveTo(170,392,178,392);ctx.lineTo(462,392);ctx.quadraticCurveTo(470,392,470,384);ctx.lineTo(470,52);ctx.stroke();
+    ctx.strokeStyle=C.muted;ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(160,48);ctx.lineTo(480,48);ctx.stroke();
+    // paper
+    ctx.fillStyle=C.paper;ctx.fillRect(220,58,200,324);ctx.strokeStyle=C.muted;ctx.lineWidth=1;ctx.strokeRect(220,58,200,324);
+    const pf=ease(seg(t,.06,.88)), fy=330-pf*240;
+    ctx.fillStyle=C.liquid;ctx.globalAlpha=.9;ctx.fillRect(220,Math.min(fy,350),200,382-Math.min(fy,350));ctx.globalAlpha=1;
+    // start line
+    ctx.strokeStyle=C.muted;ctx.lineWidth=1.5;ctx.setLineDash([2,3]);ctx.beginPath();ctx.moveTo(228,330);ctx.lineTo(412,330);ctx.stroke();ctx.setLineDash([]);
+    if(pf>0){ctx.strokeStyle=C.water;ctx.lineWidth=1.5;ctx.setLineDash([6,4]);ctx.beginPath();ctx.moveTo(220,fy);ctx.lineTo(420,fy);ctx.stroke();ctx.setLineDash([]);}
+    const df=330-fy;
+    const lanes=[[262,[[C.dye1,.25],[C.dye2,.55],[C.dye3,.82]],"M"],[320,[[C.dye2,.55]],"X"],[378,[[C.dye3,.82]],"Y"]];
+    lanes.forEach(([x,dyes,nm])=>{
+      if(nm==="M"&&pf<.05){dot(x,330,7,C.ink,.85);}
+      else dyes.forEach(([c,rf])=>{const y=330-rf*df;ctx.globalAlpha=.85;ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,7+4*pf,5+3*pf,0,0,6.2832);ctx.fill();ctx.globalAlpha=1;});
+      label(nm,x,348,"middle",C.muted);});
+    label("front",214,fy,"right",C.water,pf>.05?1:0);
+    label("startlijn",160,322,"right",null,1,false);leader(164,326,226,330);
+    label("loopvloeistof",160,370,"right",null,1,false);
+    const m=seg(t,.9,.97);
+    if(m>0){ctx.globalAlpha=m;
+      arrow(240,330,240,272,C.ink);arrow(452,330,452,93,C.ink);ctx.globalAlpha=1;
+      label("a",232,300,"right",null,m);label("b",460,210,"left",null,m);
+      ctx.globalAlpha=m;ctx.fillStyle=C.surface2;ctx.fillRect(476,60,160,92);ctx.strokeStyle=C.muted;ctx.lineWidth=1;ctx.strokeRect(476,60,160,92);ctx.globalAlpha=1;
+      label("a = 1,5 cm",486,80,"left",null,m,false);label("b = 6,0 cm",486,104,"left",null,m,false);label("Rf = 0,25",486,130,"left",C.accent,m);}
+  }};
+
+/* ---------- 9 GAS-CHROMATOGRAFIE ---------- */
+SIM.gc={
+  make(){const rows=[62,112,162];const pts=[[40,62],[120,62]];
+    rows.forEach((y,i)=>{const ltr=i%2===0;const xb=ltr?400:130;if(!ltr)pts.push([400,y]);pts.push([xb,y]);
+      if(i<rows.length-1){for(let k=1;k<=10;k++){const a=-Math.PI/2+Math.PI*k/10;pts.push([xb+(ltr?1:-1)*25*Math.cos(a),y+25+25*Math.sin(a)]);}}});
+    pts.push([450,162]);this.path=pts;
+    this.comp=[{rt:1.6,h:62,s:.1,c:"dye3"},{rt:3.4,h:100,s:.14,c:"dye1"},{rt:5.8,h:78,s:.2,c:"dye2"}];
+    const r=rng(4);this.comp.forEach(c=>c.dots=Array.from({length:10},()=>({o:(r()-.5)*2,j:(r()-.5)*6})));},
+  sig(tau){return this.comp.reduce((s,c)=>s+c.h*Math.exp(-((tau-c.rt)**2)/(2*c.s*c.s)),0);},
+  draw(t){
+    const tau=t*8;
+    // oven
+    ctx.strokeStyle=C.muted;ctx.lineWidth=1.2;ctx.setLineDash([4,4]);ctx.strokeRect(102,32,330,162);ctx.setLineDash([]);
+    label("oven",428,22,"right",C.muted,1,false);
+    // column
+    ctx.strokeStyle=C.glass;ctx.lineWidth=7;ctx.lineJoin="round";ctx.beginPath();this.path.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();
+    ctx.strokeStyle=C.surface2;ctx.lineWidth=3;ctx.stroke();
+    // injector & detector
+    ctx.fillStyle=C.muted;ctx.fillRect(28,48,26,28);label("injectie",41,95,"middle",null,1,false);
+    ctx.fillStyle=C.ink;ctx.fillRect(450,146,52,32);label("detector",476,198,"middle",null,1,false);
+    arrow(4,62,26,62,C.water);
+    // dots
+    this.comp.forEach(c=>{const sc=tau/c.rt;c.dots.forEach(d=>{const s=sc+d.o*(c.s*2.2/c.rt)*Math.min(1,sc+.2);if(s<=0||s>=1)return;const [x,y]=pathAt(this.path,s);dot(x,y+d.j*.4,2.8,C[c.c]);});});
+    // chromatogram axes
+    const X=v=>70+v/8*530, Y=v=>372-v;
+    ctx.strokeStyle=C.muted;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(70,232);ctx.lineTo(70,372);ctx.lineTo(604,372);ctx.stroke();
+    for(let m=0;m<=8;m+=2){ctx.beginPath();ctx.moveTo(X(m),372);ctx.lineTo(X(m),377);ctx.stroke();label(String(m),X(m),388,"middle",C.muted,1,false);}
+    label("tijd (min)",604,356,"right",C.muted,1,false);label("signaal",78,228,"left",C.muted,1,false);
+    // area fill per peak
+    this.comp.forEach(c=>{const end=Math.min(tau,c.rt+4*c.s);if(end<c.rt-4*c.s)return;ctx.fillStyle=C[c.c];ctx.globalAlpha=.22;ctx.beginPath();ctx.moveTo(X(c.rt-4*c.s),372);
+      for(let v=c.rt-4*c.s;v<=end;v+=.02)ctx.lineTo(X(v),Y(c.h*Math.exp(-((v-c.rt)**2)/(2*c.s*c.s))));ctx.lineTo(X(end),372);ctx.closePath();ctx.fill();ctx.globalAlpha=1;});
+    ctx.strokeStyle=C.ink;ctx.lineWidth=2;ctx.beginPath();for(let v=0;v<=tau;v+=.015){const x=X(v),y=Y(this.sig(v));v?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();
+    this.comp.forEach(c=>{if(tau>c.rt+2.5*c.s){const a=seg(tau,c.rt+2.5*c.s,c.rt+3.5*c.s);label("tR = "+String(c.rt).replace(".",",")+" min",X(c.rt),Y(c.h)-14,"middle",null,a,false);}});
+    label("kolom = stationaire fase",267,212,"middle",null,1,false);
+    label("draaggas",12,36,"left",C.water,1,false);
+  }};
+
+/* ---------- 10 KRISTALLISEREN ---------- */
+SIM.kristalliseren={
+  make(){const r=rng(31);this.p=[];
+    for(let i=0;i<36;i++){const col=i%12,row=Math.floor(i/12);this.p.push({x:180+r()*280,y:190+r()*160,ph:r()*6,c:.3+r()*.42,lx:232+col*15,ly:350-row*13});}
+    this.imp=[];for(let i=0;i<6;i++)this.imp.push({x:190+r()*260,y:195+r()*120,ph:r()*6});},
+  draw(t){
+    const T=t<.1?80:lerp(80,20,ease(seg(t,.1,.78)));
+    ctx.fillStyle=C.liquid;ctx.fillRect(161.5,176,317,187.5);
+    // warm tint fades
+    ctx.globalAlpha=.12*(1-seg(t,.05,.6));ctx.fillStyle=C.flame;ctx.fillRect(161.5,176,317,187.5);ctx.globalAlpha=1;
+    beaker(160,140,320,225,0);
+    this.imp.forEach(p=>dot(p.x+Math.sin(NOW/600+p.ph)*5,p.y+Math.cos(NOW/700+p.ph)*5,3.2,C.dye1));
+    this.p.forEach(p=>{const k=ease(seg(t,p.c,p.c+.14));
+      const fx=p.x+Math.sin(NOW/600+p.ph)*4*(1-k),fy=p.y+Math.cos(NOW/650+p.ph)*4*(1-k);
+      const x=lerp(fx,p.lx,k),y=lerp(fy,p.ly,k);
+      if(k>=1){ctx.fillStyle=C.salt;ctx.fillRect(x-6,y-6,12,12);}else dot(x,y,3.3,C.salt);});
+    ctx.fillStyle=C.surface2;ctx.fillRect(28,28,110,34);ctx.strokeStyle=C.muted;ctx.lineWidth=1;ctx.strokeRect(28,28,110,34);
+    label(Math.round(T)+" °C",83,45,"middle");
+    label("langzaam afkoelen",320,110,"middle",C.accent,seg(t,.1,.18)*(1-seg(t,.8,.9)));
+    label("kristallen",320,388,"middle",null,seg(t,.6,.7));
+    const a=seg(t,.76,.86);label("moederloog",500,230,"left",null,a);label("(met verontreiniging)",500,252,"left",C.muted,a,false);leader(496,236,452,240,a);
+  }};
+
+/* ---------- 11 GEFRACTIONEERDE DESTILLATIE ---------- */
+SIM.gefractioneerd={
+  ys:[55,130,190,250,335], cols:["dye2","dye3","eth","flame","carbon"], names:["gas","benzine","kerosine","diesel","residu"],
+  make(){const r=rng(17);this.p=[];
+    for(let i=0;i<55;i++){const f=i%5,k=Math.floor(i/5);const jx=(r()-.5)*70;const d=.1+r()*.55;const ty=this.ys[f]+(r()-.5)*6;
+      this.p.push({f,d,pts:[[185,320],[272,320],[320+jx,f===4?335:315],[320+jx*.6,ty],[378+k*4,this.ys[f]]]});}},
+  draw(t){
+    // temperature bar
+    const g=ctx.createLinearGradient(0,40,0,350);g.addColorStop(0,C.water);g.addColorStop(1,C.flame);
+    ctx.globalAlpha=.75;ctx.fillStyle=g;ctx.fillRect(246,40,10,310);ctx.globalAlpha=.08;ctx.fillRect(272,40,96,310);ctx.globalAlpha=1;
+    label("± 25 °C",240,48,"right",C.muted,1,false);label("± 350 °C",240,374,"right",C.muted,1,false);
+    // column
+    glass();ctx.strokeRect(270,36,100,318);
+    ctx.strokeStyle=C.glass;ctx.lineWidth=2;[95,160,220,285].forEach(y=>{ctx.beginPath();ctx.moveTo(272,y);ctx.lineTo(310,y);ctx.moveTo(330,y);ctx.lineTo(368,y);ctx.stroke();});
+    // arms + labels
+    this.ys.forEach((y,f)=>{glass(2.5);ctx.beginPath();ctx.moveTo(370,y-5);ctx.lineTo(424,y-5);ctx.moveTo(370,y+5);ctx.lineTo(424,y+5);ctx.stroke();
+      dot(434,y,5,C[this.cols[f]]);label(this.names[f],446,y,"left");});
+    // oven
+    ctx.strokeStyle=C.muted;ctx.lineWidth=2;ctx.strokeRect(86,292,90,58);label("oven met aardolie",131,276,"middle",C.muted,1,false);
+    glass(2.5);ctx.beginPath();ctx.moveTo(176,315);ctx.lineTo(270,315);ctx.moveTo(176,325);ctx.lineTo(270,325);ctx.stroke();
+    flame(131,388,.9,1);
+    this.p.forEach(p=>{const q=ease(seg(t,p.d,p.d+.22));if(q<=0)return;const [x,y]=pathAt(p.pts,q);
+      const a=1;
+      const rising=p.f!==4&&y>this.ys[p.f]+5;
+      if(rising)ring(x,y,3,C[this.cols[p.f]],a);else dot(x,y,3,C[this.cols[p.f]],a);});
+    label("koud",320,22,"middle",C.muted,1,false);
+  }};
+
+/* ---------- 12 NEERSLAAN ---------- */
+SIM.neerslaan={
+  make(){const r=rng(41);const pos=()=>[182+r()*276,205+r()*150];
+    this.so4=[];this.ba=[];this.na=[];this.cl=[];
+    for(let i=0;i<10;i++){const a=pos(),b=pos();const m=[(a[0]+b[0])/2,(a[1]+b[1])/2];
+      this.so4.push({b:a,ph:r()*6});this.ba.push({b,ph:r()*6,d:.12+i*.02,m,pt:.36+i*.028,sed:[262+(i%5)*24,352-Math.floor(i/5)*10]});}
+    for(let i=0;i<20;i++)this.na.push({b:pos(),ph:r()*6});
+    for(let i=0;i<20;i++)this.cl.push({b:pos(),ph:r()*6,d:.12+(i/20)*.2});},
+  draw(t){
+    ctx.fillStyle=C.liquid;ctx.fillRect(171.5,193,297,170.5);
+    ctx.globalAlpha=.16*seg(t,.36,.5)*(1-seg(t,.7,.95));ctx.fillStyle=C.muted;ctx.fillRect(171.5,193,297,170.5);ctx.globalAlpha=1;
+    beaker(170,150,300,215,0);
+    // pipette
+    const pa=1-seg(t,.36,.44);
+    if(pa>0){ctx.globalAlpha=pa;glass(2.5);ctx.beginPath();ctx.moveTo(312,30);ctx.lineTo(312,96);ctx.lineTo(318,118);ctx.moveTo(328,30);ctx.lineTo(328,96);ctx.lineTo(322,118);ctx.stroke();ctx.globalAlpha=1;
+      label("bariumchloride-oplossing",340,50,"left",null,pa,false);}
+    const jit=(p,s=4)=>[p.b[0]+Math.sin(NOW/600+p.ph)*s,p.b[1]+Math.cos(NOW/650+p.ph)*s];
+    this.na.forEach(p=>{const [x,y]=jit(p);dot(x,y,2.4,C.muted);});
+    this.cl.forEach(p=>{const k=ease(seg(t,p.d,p.d+.08));if(k<=0)return;const [jx,jy]=jit(p);dot(lerp(320,jx,k),lerp(120,jy,k),2.9,C.dye2);});
+    this.ba.forEach((b,i)=>{const s=this.so4[i];
+      const k0=ease(seg(t,b.d,b.d+.08)),k1=ease(seg(t,b.pt,b.pt+.08)),k2=ease(seg(t,b.pt+.08,b.pt+.3));
+      const [sx,sy]=jit(s),[bx0,by0]=jit(b);
+      if(k1<=0){dot(sx,sy,3.6,C.salt);if(k0>0)dot(lerp(320,bx0,k0),lerp(120,by0,k0),3.3,C.dye3);return;}
+      const cx=lerp(lerp((sx+bx0)/2,b.m[0],k1),b.sed[0],k2),cy=lerp(lerp((sy+by0)/2,b.m[1],k1),b.sed[1],k2);
+      const sx2=lerp(sx,cx-4,k1),sy2=lerp(sy,cy,k1),bx2=lerp(bx0,cx+4,k1),by2=lerp(by0,cy,k1);
+      dot(k2>0?cx-4:sx2,k2>0?cy:sy2,3.6,C.salt);dot(k2>0?cx+4:bx2,k2>0?cy:by2,3.3,C.dye3);});
+    const a=seg(t,.72,.82);
+    label("neerslag BaSO₄(s)",320,384,"middle",null,a);
+    label("Na⁺ en Cl⁻",486,240,"left",null,seg(t,.78,.88));label("blijven opgelost",486,262,"left",C.muted,seg(t,.78,.88),false);
+    label("Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)",320,130,"middle",C.accent,seg(t,.44,.52));
+  }};
+
+/* ====================== LAB CONTROLLER ====================== */
+let cur=METHODS[0], T=0, playing=false, last=0, seen=false;
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ICON_PLAY='<svg viewBox="0 0 20 20" fill="currentColor"><path d="M5 3l12 7-12 7z"/></svg>';
+const ICON_PAUSE='<svg viewBox="0 0 20 20" fill="currentColor"><rect x="4" y="3" width="4" height="14"/><rect x="12" y="3" width="4" height="14"/></svg>';
+function render(){
+  const s=cv.width/W;ctx.setTransform(s,0,0,s,0,0);ctx.clearRect(0,0,W,H);
+  SIM[cur.key].draw(T);
+  $("#scrub").value=Math.round(T*1000);
+  const items=[...$("#steps").children];let on=0;cur.steps.forEach((st,i)=>{if(T>=st[0])on=i;});
+  items.forEach((li,i)=>li.classList.toggle("on",i===on));
+}
+function setPlaying(p){playing=p;const b=$("#play");b.innerHTML=p?ICON_PAUSE:ICON_PLAY;b.setAttribute("aria-label",p?"Pauzeren":"Afspelen");if(p){last=performance.now();requestAnimationFrame(loop);}}
+function loop(now){NOW=now;if(!playing){return;}
+  const dt=(now-last)/1000;last=now;T=Math.min(1,T+dt/cur.dur);render();
+  if(T>=1){setPlaying(false);markSeen(cur.key);return;}requestAnimationFrame(loop);}
+// idle loop for flicker (flames) while paused but visible — cheap
+function idle(now){NOW=now;if(!playing&&inView&&(cur.key==="indampen"||cur.key==="destilleren"||cur.key==="gefractioneerd")&&T<.97)render();requestAnimationFrame(idle);}
+let inView=false;
+function selectMethod(key,{scroll=false,autoplay=true}={}){
+  cur=METHODS.find(m=>m.key===key)||METHODS[0];
+  SIM[cur.key].make();T=0;
+  document.querySelectorAll("#picker button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===cur.key?"true":"false"));
+  const pb=document.querySelector(`#picker button[data-k="${cur.key}"]`),pk=$("#picker");if(pb)pk.scrollLeft=pb.offsetLeft-pk.offsetLeft-(pk.clientWidth-pb.offsetWidth)/2;
+  $("#werking").style.setProperty("--mc",`var(${PROPS.find(p=>p.id===cur.prop).color})`);
+  $("#benchbasis").innerHTML=`<b>${cur.name}</b> berust op verschil in <b>${cur.basis}</b>`;
+  $("#legend").innerHTML=cur.legend.map(([c,t,ringy])=>`<span><i class="${ringy?"ring":""}" style="background:var(--${c});border-color:var(--${c})"></i>${t}</span>`).join("");
+  $("#steps").innerHTML=cur.steps.map(s=>`<li data-t="${s[0]}" tabindex="0" role="button">${s[1]}</li>`).join("");
+  $("#steps").querySelectorAll("li").forEach(li=>{const go=()=>{setPlaying(false);T=+li.dataset.t+.001;render();};li.addEventListener("click",go);li.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});
+  $("#info").innerHTML=`<h3>${cur.name}</h3>
+    <div class="basis"><small>Berust op verschil in</small><strong>${cur.basis}</strong><span class="ex">„${cur.say}”</span></div>
+    <div class="micro"><small>vwo · Op microniveau</small><ul>${cur.micro.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+    <dl><div><dt>Soort mengsel</dt><dd>${cur.mix}</dd></div><div><dt>Wat krijg je</dt><dd>${cur.get}</dd></div><div><dt>Uit het dagelijks leven</dt><dd>${cur.ex}</dd></div></dl>
+    <div class="tip"><b>${cur.tip[0]}</b>${cur.tip[1]}</div>`;
+  if(scroll)$("#werking").scrollIntoView({behavior:reduce?"auto":"smooth"});
+  setPlaying(false);render();
+  if(autoplay&&!reduce&&(seen||scroll))setTimeout(()=>setPlaying(true),scroll?500:150);
+}
+function initLab(){
+  $("#picker").innerHTML=METHODS.map(m=>`<button data-k="${m.key}" aria-pressed="false"><i style="background:var(${PROPS.find(p=>p.id===m.prop).color})"></i><span>${m.name.replace("Papier- en dunnelaagchromatografie","Papier/DLC").replace("Bezinken + decanteren","Bezinken").replace("Gefractioneerde destillatie","Gefractioneerd").replace("Neerslaan + filtreren","Neerslaan").replace("(Her)kristalliseren","Kristalliseren").replace("Gaschromatografie","Gaschromat. (GC)")}</span></button>`).join("");
+  $("#picker").addEventListener("click",e=>{const b=e.target.closest("button");if(b){history.replaceState(null,"","#"+b.dataset.k);selectMethod(b.dataset.k);}});
+  $("#play").addEventListener("click",()=>{if(T>=1)T=0;setPlaying(!playing);});
+  $("#again").addEventListener("click",()=>{SIM[cur.key].make();T=0;render();setPlaying(true);});
+  $("#scrub").addEventListener("input",e=>{setPlaying(false);T=e.target.value/1000;render();});
+  new IntersectionObserver(es=>{es.forEach(e=>{inView=e.isIntersecting;if(e.isIntersecting&&!seen){seen=true;if(!reduce&&T===0)setPlaying(true);}});},{threshold:.35}).observe(cv);
+  window.addEventListener("resize",()=>{sizeCanvas();render();});
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{readColors();render();});
+  new MutationObserver(()=>{readColors();render();}).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  sizeCanvas();readColors();
+  const h=location.hash.slice(1);selectMethod(METHODS.some(m=>m.key===h)?h:"filtreren",{autoplay:false});
+  requestAnimationFrame(idle);
+}
+
+/* ====================== OVERVIEW ====================== */
+function initOverview(){
+  $("#props").innerHTML=PROPS.map(p=>{const ms=METHODS.filter(m=>m.prop===p.id);
+    return `<div class="prop" style="--pc:var(${p.color})"><span class="lab">Verschil in</span><h3>${p.name}</h3><p>${p.text}</p><div class="chips">${ms.map(m=>`<button class="chip" data-go="${m.key}">${m.name}</button>`).join("")}</div></div>`;}).join("");
+  $("#tbody").innerHTML=METHODS.map(m=>`<tr><td>${m.name}</td><td><b>${m.basis}</b></td><td>${m.mix}</td><td>${m.get}</td><td>${m.ex}</td></tr>`).join("");
+  document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(b){history.replaceState(null,"","#"+b.dataset.go);selectMethod(b.dataset.go,{scroll:true});}});
+  $("#traps").innerHTML=TRAPS.map(([no,yes])=>`<div class="trap"><span class="no">✗ ${no}</span><p><span class="yes">✓ </span>${yes}</p></div>`).join("");
+}
+
+/* ====================== DECISION TREE ====================== */
+const TREE={
+ start:{q:"Wat wil je doen?",o:[["Stoffen van elkaar scheiden","Je wilt (zuivere) stoffen overhouden.","mix"],["Onderzoeken welke stoffen erin zitten","Analyse: kleine hoeveelheden, bekende stoffen vergelijken.","ana"]]},
+ ana:{q:"Wat voor stoffen onderzoek je?",o:[["Kleurstoffen of niet-vluchtige stoffen","Bijvoorbeeld inkt of snoep.","R:chromatografie"],["Stoffen die bij verwarmen gasvormig worden","Bijvoorbeeld alcohol in bloed. Ook: hoeveel zit erin?","R:gc"]]},
+ mix:{q:"Wat voor mengsel heb je?",o:[["Vaste stof in een vloeistof, niet opgelost","Suspensie: troebel, de deeltjes zie je zweven of zakken.","susp"],["Vaste stof opgelost in een vloeistof","Oplossing: helder, bijvoorbeeld zout water.","opl"],["Twee vloeistoffen die met elkaar mengen","Bijvoorbeeld ethanol en water.","R:destilleren"],["Twee vloeistoffen die niet mengen","Twee lagen, bijvoorbeeld olie en water.","R2:bezinken"],["Eén stof eruit halen met een ander oplosmiddel","De stof lost beter op in dat oplosmiddel.","R:extraheren"],["Een beetje kleur-, geur- of smaakstof weghalen","Bijvoorbeeld kleurstof uit water, geur uit lucht.","R:adsorberen"],["Twee vaste stoffen","Bijvoorbeeld zand en zout.","COMBI"],["Veel vloeistoffen met verschillende kookpunten","Bijvoorbeeld aardolie: je wilt groepen stoffen (fracties).","R:gefractioneerd"]]},
+ susp:{q:"Hoe groot zijn de deeltjes?",o:[["Groot genoeg voor een filter","Zand, koffiedik, neerslag.","R:filtreren"],["Zakken vanzelf, je hebt tijd","Laten staan en afschenken.","R:bezinken"],["Heel klein, gaan door het filter of zakken te traag","Bijvoorbeeld bloedcellen of fijne klei.","R:centrifugeren"]]},
+ opl:{q:"Wat wil je terugwinnen?",o:[["Alleen de opgeloste vaste stof","Het oplosmiddel mag verdwijnen.","R:indampen"],["Het oplosmiddel (en eventueel de vaste stof)","Bijvoorbeeld drinkwater uit zeewater.","R:destilleren"],["De vaste stof, maar dan zuiver","Er zit een kleine hoeveelheid verontreiniging in.","R:kristalliseren"],["Ik wil bepaalde ionen eruit hebben","Bijvoorbeeld sulfaat of fosfaat uit water.","R:neerslaan"]]}
+};
+let trail=["start"];
+function drawTree(){
+  const id=trail[trail.length-1];const box=$("#tree");
+  const crumbs=trail.length>1?`<div class="crumbs">${trail.map((t,i)=>i<trail.length-1?`<button data-back="${i}">${i===0?"Begin":TREE[t].q.replace("?","")}</button> ›`:"").join(" ")}</div>`:"";
+  if(id==="COMBI"){
+    box.innerHTML=`${crumbs}<div class="result"><div class="r"><span>Gebruik een combinatie:</span><b>Oplossen → filtreren → indampen</b><span>Lost één van de stoffen op in water (of een ander oplosmiddel) en de andere niet? Gebruik dat verschil in oplosbaarheid.</span></div>
+      <p>1. Voeg water toe: zout lost op, zand niet. 2. Filtreer: het zand is het residu. 3. Damp het filtraat in: het zout blijft achter. Zie examenvraag 4.</p>
+      <div class="qnav"><button class="btn" data-go="filtreren">Bekijk filtreren</button><button class="btn ghost" id="treeReset">Opnieuw kiezen</button></div></div>`;
+    $("#treeReset").onclick=()=>{trail=["start"];drawTree();};
+  } else if(id.startsWith("R")){
+    const key=id.split(":")[1], m=METHODS.find(x=>x.key===key);
+    const extra=id.startsWith("R2")?`<p>Gebruik een <b>scheitrechter</b>: laat de lagen bezinken en tap de onderlaag af. De vloeistof met de kleinste dichtheid zit boven.</p>`:"";
+    box.innerHTML=`${crumbs}<div class="result"><div class="r"><span>Gebruik:</span><b>${m.name}</b><span>Berust op verschil in <strong>${m.basis}</strong>.</span></div>${extra}<p>${m.get}</p>
+      <div class="qnav"><button class="btn" data-go="${key}">Bekijk de animatie</button><button class="btn ghost" id="treeReset">Opnieuw kiezen</button></div></div>`;
+    $("#treeReset").onclick=()=>{trail=["start"];drawTree();};
+  } else {
+    const n=TREE[id];
+    box.innerHTML=`${crumbs}<p class="q">${n.q}</p><div class="opts">${n.o.map(([a,b,go])=>`<button class="opt" data-next="${go}"><b>${a}</b><span>${b}</span></button>`).join("")}</div>`;
+  }
+  box.querySelectorAll("[data-next]").forEach(b=>b.onclick=()=>{trail.push(b.dataset.next);drawTree();});
+  box.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{trail=trail.slice(0,+b.dataset.back+1);drawTree();});
+}
+
+/* ====================== BLOKSCHEMA ====================== */
+const BS=[
+ {key:"ethanol",name:"Bio-ethanol",intro:"In R1 zetten gistcellen glucose om in ethanol en koolstofdioxide: C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂. Het CO₂ ontwijkt als gas. Uit S1 en S2 komen de gist, de ethanol en het water apart.",
+  boxes:[["R1",150,110,100,60,"fermentatie"],["S1",330,110,90,60],["S2",510,110,90,60]],
+  lines:[[[[30,140],[150,140]],"glucose, water","t",90,128],[[[200,110],[200,45]],"CO₂","r",210,60],[[[250,140],[330,140]],"ethanol, water, gist","t",290,98],[[[420,140],[510,140]],"ethanol, water","t",465,128],[[[600,140],[720,140]],"ethanol (product)","t",662,128],[[[555,170],[555,240]],"water","r",565,215],[[[375,170],[375,255],[220,255],[220,170]],"gist (recycle)","rec",298,270]],
+  vh:440,vboxes:[["R1",130,60,100,56,"fermentatie"],["S1",130,190,100,56],["S2",130,320,100,56]],
+  vlines:[[[[180,8],[180,60]],"glucose, water","r",190,30],[[[230,88],[300,88]],"CO₂","r",306,88],[[[180,116],[180,190]],"ethanol, water, gist","r",190,153],[[[180,246],[180,320]],"ethanol, water","r",190,283],[[[230,348],[320,348]],"ethanol","t",275,334],[[[180,376],[180,430]],"water","r",190,405],[[[130,218],[60,218],[60,88],[130,88]],"gist","rec",66,150]],
+  S:{S1:{ctx:"In S1 komt een mengsel van gistcellen (vast, levend) in een oplossing van ethanol in water. De gist moet eruit en terug naar R1.",
+    opts:[["filtreren of centrifugeren",1,"Goed. Gistcellen zijn vaste deeltjes: filtreren berust op het verschil in deeltjesgrootte, centrifugeren op het verschil in dichtheid tussen de gistcellen en de oplossing."],
+          ["destilleren",0,"Destilleren scheidt vloeistoffen op kookpunt. Je zou de gist verhitten en doden, en de gist zit niet opgelost: dat kan veel eenvoudiger."],
+          ["extraheren",0,"Er is geen tweede oplosmiddel nodig. Gist lost niet op, het is een vaste stof in een vloeistof: een suspensie."],
+          ["indampen",0,"Dan verdampt je ethanol, en dat is juist je product."]]},
+   S2:{ctx:"In S2 komt een oplossing van ethanol in water. Ethanol (kp 78 °C) wil je als product, het water gaat weg.",
+    opts:[["destilleren",1,"Goed. Destilleren berust op het verschil in kookpunt tussen ethanol en water. Op microniveau: watermoleculen vormen gemiddeld meer waterstofbruggen dan ethanolmoleculen."],
+          ["filtreren",0,"Ethanol en water mengen volledig: er zijn geen grote deeltjes die op een filter blijven liggen."],
+          ["indampen",0,"Bij indampen verdwijnt juist de vluchtigste stof in de lucht, en dat is de ethanol."],
+          ["bezinken",0,"Ethanol en water mengen: er ontstaan geen twee lagen."]]}},
+  extra:["Waarom wordt de gist teruggevoerd naar R1?",[["de gist is de katalysator (enzymen) en wordt niet verbruikt",1],["de gist reageert verder tot ethanol",0],["zo komt er minder CO₂ vrij",0]],"Gist bevat enzymen die als katalysator werken. Die worden bij de reactie niet verbruikt, dus je kunt ze opnieuw gebruiken. Dat bespaart grondstof en kosten."]},
+ {key:"ammoniak",name:"Ammoniak",intro:"In R1 reageren stikstof en waterstof bij hoge druk en temperatuur: N₂ + 3 H₂ ⇄ 2 NH₃. Dit is een evenwicht: er komt altijd een mengsel van N₂, H₂ en NH₃ uit de reactor.",
+  boxes:[["R1",170,120,110,60,"450 °C, 200 bar"],["S1",420,120,100,60]],
+  lines:[[[[30,135],[170,135]],"N₂","t",100,123],[[[30,165],[170,165]],"H₂","t",100,153],[[[280,150],[420,150]],"N₂, H₂, NH₃","t",350,138],[[[520,150],[700,150]],"NH₃ (l)","t",610,138],[[[470,120],[470,50],[225,50],[225,120]],"N₂, H₂ (recycle)","rec",348,36]],
+  vh:340,vboxes:[["R1",120,70,120,56,"450 °C, 200 bar"],["S1",130,210,100,56]],
+  vlines:[[[[160,10],[160,70]],"N₂","l",150,38],[[[200,10],[200,70]],"H₂","r",210,38],[[[180,126],[180,210]],"N₂, H₂, NH₃","r",190,168],[[[180,266],[180,330]],"NH₃ (l)","r",190,300],[[[230,238],[300,238],[300,98],[240,98]],"N₂, H₂","rec",306,168]],
+  S:{S1:{ctx:"In S1 komt een gasmengsel van N₂ (kp −196 °C), H₂ (kp −253 °C) en NH₃ (kp −33 °C). Het NH₃ wil je als vloeistof hebben.",
+    opts:[["afkoelen tot NH₃ condenseert (destilleren/condenseren)",1,"Goed. Dit berust op het verschil in kookpunt tussen ammoniak en stikstof/waterstof. NH₃-moleculen vormen waterstofbruggen, N₂ en H₂ alleen zwakke vanderwaalsbindingen."],
+          ["filtreren",0,"Het zijn allemaal gassen: er zijn geen vaste deeltjes om tegen te houden."],
+          ["adsorberen aan actieve kool",0,"Dat gebruik je voor kleine hoeveelheden kleur- of geurstof. Hier moet een groot deel van de stroom gescheiden worden."],
+          ["centrifugeren",0,"Gassen mengen volledig; met centrifugeren krijg je ze niet uit elkaar."]]}},
+  extra:["Waarom gaan N₂ en H₂ terug naar R1?",[["de reactie is een evenwicht, dus niet alles reageert in één keer",1],["N₂ en H₂ zijn katalysatoren",0],["anders ontploft S1",0]],"Omdat de reactie een evenwicht is, wordt in R1 maar een deel van de N₂ en H₂ omgezet. Door ze te recyclen gaat er geen grondstof verloren."]}
+];
+let bsCur=BS[0],bsSel=null,bsExtra=null;
+function arrowPath(pts,cls){const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=[pts[pts.length-2],pts[pts.length-1]];const an=Math.atan2(b[1]-a[1],b[0]-a[0]);
+  const h=[[b[0],b[1]],[b[0]-10*Math.cos(an-.42),b[1]-10*Math.sin(an-.42)],[b[0]-10*Math.cos(an+.42),b[1]-10*Math.sin(an+.42)]];
+  return `<path class="ln ${cls}" d="${d}"/><polygon class="ah ${cls}" points="${h.map(p=>p.join(",")).join(" ")}"/>`;}
+function drawBS(){
+  $("#bstabs").innerHTML=BS.map(b=>`<button data-bs="${b.key}" aria-pressed="${b===bsCur}">${b.name}</button>`).join("");
+  const V=matchMedia("(max-width:560px)").matches;
+  const svg=[`<svg viewBox="0 0 ${V?"360 "+bsCur.vh:"740 290"}" class="${V?"v":""}" role="img" aria-label="Blokschema ${bsCur.name}">`];
+  (V?bsCur.vlines:bsCur.lines).forEach(([pts,txt,pos,tx,ty])=>{const rec=pos==="rec";svg.push(arrowPath(pts,rec?"rec":""));
+    svg.push(`<text class="st ${rec?"rec":""}" x="${tx}" y="${ty}" text-anchor="${pos==="r"||(pos==="rec"&&V)?"start":pos==="l"?"end":"middle"}">${txt}</text>`);});
+  (V?bsCur.vboxes:bsCur.boxes).forEach(([id,x,y,w,h,sub])=>{const isS=id[0]==="S";const done=ST.bs[bsCur.key+id];
+    const lbl=isS&&done?done:id;
+    if(isS)svg.push(`<g class="sbtn" data-s="${id}" tabindex="0" role="button" aria-label="Scheidingsruimte ${id}${done?": "+done:""}">`);
+    svg.push(`<rect class="blk ${isS?"s":""} ${done?"done":""} ${bsSel===id?"active":""}" x="${x}" y="${y}" width="${w}" height="${h}" rx="6"/>`);
+    svg.push(`<text class="bt" x="${x+w/2}" y="${y+h/2-(sub||(isS&&done)?7:0)}">${id}</text>`);
+    if(sub)svg.push(`<text class="bt small" x="${x+w/2}" y="${y+h/2+13}">${sub}</text>`);
+    if(isS&&done)svg.push(`<text class="bt small" x="${x+w/2}" y="${y+h/2+13}">✓ ${done.split(" ")[0]}</text>`);
+    if(isS)svg.push(`</g>`);});
+  svg.push(`</svg>`);
+  $("#bsfig").innerHTML=svg.join("");
+  $("#bscap").textContent="Gestippeld = recyclestroom. Tik op een blauw S-blok.";
+  const P=$("#bspanel");
+  if(bsSel){const sd=bsCur.S[bsSel];
+    P.innerHTML=`<h3>Welke scheidingsmethode hoort in ${bsSel}?</h3><p>${sd.ctx}</p><div class="answers">${sd.opts.map((o,i)=>`<button class="ans" data-o="${i}">${o[0]}</button>`).join("")}</div><div id="bsfb"></div>`;
+    P.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{const o=sd.opts[+b.dataset.o];
+      P.querySelectorAll(".ans").forEach(x=>{x.classList.remove("ok","wrong");});b.classList.add(o[1]?"ok":"wrong");
+      $("#bsfb").innerHTML=`<div class="expl"><b>${o[1]?"Goed!":"Nee."}</b> ${o[2]}</div>`;
+      if(o[1]){ST.bs[bsCur.key+bsSel]=o[0];save();P.querySelectorAll(".ans").forEach(x=>x.disabled=true);
+        const left=Object.keys(bsCur.S).filter(k=>!ST.bs[bsCur.key+k]);
+        if(!left.length)celebrate(`Blokschema ${bsCur.name.toLowerCase()} klopt!`);
+        $("#bsfb").insertAdjacentHTML("beforeend",`<div class="qnav" style="margin-top:10px"><button class="btn" id="bsnext">${left.length?"Volgende: "+left[0]:"Laatste vraag"}</button></div>`);
+        $("#bsnext").onclick=()=>{bsSel=left.length?left[0]:null;bsExtra=left.length?null:"ask";drawBS();};
+        drawBSFig();}
+    });
+  } else if(bsExtra){const [q,opts,ex]=bsCur.extra;
+    P.innerHTML=`<h3>${q}</h3><div class="answers">${opts.map((o,i)=>`<button class="ans" data-o="${i}">${o[0]}</button>`).join("")}</div><div id="bsfb"></div>`;
+    P.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{const good=opts[+b.dataset.o][1];P.querySelectorAll(".ans").forEach(x=>{x.disabled=true;if(opts[+x.dataset.o][1])x.classList.add("ok");else if(x===b)x.classList.add("wrong");});
+      const nxt=BS[(BS.indexOf(bsCur)+1)%BS.length];
+      $("#bsfb").innerHTML=`<div class="expl"><b>${good?"Goed!":"Nee."}</b> ${ex}</div><div class="qnav" style="margin-top:10px"><button class="btn" id="bsother">Naar ${nxt.name}</button></div>`;
+      $("#bsother").onclick=()=>{bsCur=nxt;bsSel=null;bsExtra=null;drawBS();};});
+  } else {
+    P.innerHTML=`<h3>${bsCur.name}</h3><p>${bsCur.intro}</p><p><b>Tik op S1</b> om te beginnen.</p>`;
+  }
+  wireBS();
+}
+function drawBSFig(){const P=$("#bspanel");const nodes=[...P.childNodes];drawBS();P.replaceChildren(...nodes);}
+matchMedia("(max-width:560px)").addEventListener("change",()=>drawBSFig());
+function wireBS(){
+  $("#bstabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{bsCur=BS.find(x=>x.key===b.dataset.bs);bsSel=null;bsExtra=null;drawBS();});
+  $("#bsfig").querySelectorAll("g.sbtn").forEach(g=>{const go=()=>{bsSel=g.dataset.s;bsExtra=null;drawBS();};g.addEventListener("click",go);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});
+}
+
+/* ====================== QUIZ ====================== */
+/* each mc: [vraag, [goed, fout1, fout2, fout3], uitleg, [null, waarom fout1, waarom fout2, waarom fout3], vwo?] */
+const MC=[
+ ["Waar berust filtreren op?",["verschil in deeltjesgrootte","verschil in dichtheid","verschil in oplosbaarheid","verschil in kookpunt"],"De zandkorrels zijn groter dan de poriën van het filter, de watermoleculen en opgeloste deeltjes kleiner.",[null,"Dichtheid hoort bij bezinken en centrifugeren.","Oplosbaarheid zorgt er wel voor dat zand vast blijft, maar het filter zelf scheidt op grootte.","Er wordt niets verhit."]],
+ ["Je wilt drinkwater maken van zeewater. Welke methode gebruik je?",["destilleren","indampen","filtreren","centrifugeren"],"Bij destilleren condenseer je de waterdamp en vang je het water op.",[null,"Bij indampen verdwijnt het water in de lucht: je houdt alleen zout over.","Het zout is opgelost en gaat door het filter heen.","Opgelost zout zakt niet uit, hoe hard je ook draait."]],
+ ["Waar berust centrifugeren op?",["verschil in dichtheid","verschil in deeltjesgrootte","verschil in aanhechtingsvermogen","verschil in kookpunt"],"Centrifugeren is versneld bezinken. Deeltjes met een grotere dichtheid gaan naar de bodem van het buisje.",[null,"Grootte bepaalt hoe snel iets zakt, maar de richting (naar beneden of naar boven) komt door de dichtheid.","Er hecht niets ergens aan.","Er wordt niets verhit."]],
+ ["Hexaan (ρ = 0,66 g/cm³) en water (ρ = 1,00 g/cm³) zitten samen in een scheitrechter. Wat zie je?",["hexaan vormt de bovenlaag","water vormt de bovenlaag","ze mengen tot één laag","het hangt af van hoeveel je van elk neemt"],"Hexaan en water mengen niet. De vloeistof met de kleinste dichtheid drijft boven.",[null,"Water heeft de grootste dichtheid en zakt dus naar onderen.","Hexaan is apolair en mengt niet met water.","De volgorde hangt alleen van de dichtheid af, niet van de hoeveelheid."]],
+ ["Dichloormethaan (ρ = 1,33 g/cm³) en water zitten samen in een scheitrechter. Welke laag tap je als eerste af?",["de dichloormethaanlaag","de waterlaag","allebei tegelijk","dat kun je niet weten"],"Dichloormethaan heeft een grotere dichtheid dan water en zit dus onderin. De kraan zit onderaan.",[null,"Pas op: niet elk organisch oplosmiddel drijft. Kijk altijd naar de dichtheid.","De lagen mengen niet: je tapt er eerst één af.","De dichtheden staan in Binas."]],
+ ["Je schudt joodwater met hexaan. Het jood gaat naar het hexaan. Hoe heet dit?",["extraheren","adsorberen","destilleren","decanteren"],"Je haalt een stof uit een mengsel met een extractiemiddel waarin die stof beter oplost. Het berust op verschil in oplosbaarheid.",[null,"Bij adsorberen hecht een stof aan het oppervlak van een vaste stof.","Er wordt niets verhit.","Decanteren is afschenken na bezinken."]],
+ ["Waarom lost jood (I₂) beter op in hexaan dan in water?",["jood en hexaan zijn allebei apolair; jood kan geen waterstofbruggen vormen met water","hexaan heeft een kleinere dichtheid dan water","jood reageert met hexaan","jood vormt waterstofbruggen met hexaan"],"Apolaire stoffen lossen op in apolaire oplosmiddelen. Watermoleculen houden elkaar vast met waterstofbruggen; I₂ kan daar niet tussen.",[null,"De dichtheid bepaalt welke laag boven zit, niet waarin jood oplost.","Er ontstaat geen nieuwe stof: oplossen is geen reactie.","Hexaan heeft geen OH- of NH-groepen: geen waterstofbruggen."],1],
+ ["Water (18 u) heeft een hoger kookpunt dan ethanol (46 u). Hoe komt dat?",["watermoleculen vormen gemiddeld meer waterstofbruggen per molecuul","de atoombindingen in water zijn sterker","water is een zout","ethanol heeft sterkere vanderwaalsbindingen"],"Een watermolecuul heeft twee H-atomen aan O en twee vrije elektronenparen. Daardoor vormt water gemiddeld meer waterstofbruggen dan ethanol, dat maar één OH-groep heeft.",[null,"Bij koken blijven de moleculen heel: alleen de bindingen tussen de moleculen worden verbroken.","Water is een moleculaire stof.","Dat klopt wel (grotere massa), maar dat zou juist een hóger kookpunt voor ethanol geven. Het verschil in waterstofbruggen wint."],1],
+ ["Waarom heeft keukenzout een veel hoger kookpunt dan water?",["in een zout zitten ionen met sterke ionbindingen in een rooster","zout heeft een grotere dichtheid","zoutmoleculen zijn groter","zout vormt meer waterstofbruggen"],"Om zout te laten koken moet je de ionbindingen tussen Na⁺ en Cl⁻ verbreken. Die zijn veel sterker dan de waterstofbruggen en vanderwaalsbindingen tussen watermoleculen.",[null,"Dichtheid zegt niets over de sterkte van bindingen.","Zout bestaat niet uit moleculen maar uit ionen.","Zout vormt geen waterstofbruggen; het heeft ionbindingen."],1],
+ ["Een afzuigkap haalt etensgeur uit de lucht met actieve kool. Welke scheidingsmethode is dat?",["adsorberen","extraheren","filtreren","indampen"],"De geurmoleculen hechten aan het oppervlak van de kool. Adsorberen berust op verschil in aanhechtingsvermogen.",[null,"Er is geen oplosmiddel waarin de geur oplost.","Geurmoleculen zijn veel te klein om tegen te houden; ze plakken aan het oppervlak.","Er verdampt niets."]],
+ ["Een vlek ligt 2,4 cm boven de startlijn. Het front ligt 6,0 cm boven de startlijn. Wat is de Rf-waarde?",["0,40","2,5","0,60","3,6"],"Rf = afstand vlek ÷ afstand front = 2,4 ÷ 6,0 = 0,40. Rf heeft geen eenheid en ligt tussen 0 en 1.",[null,"Je hebt front ÷ vlek gedaan. Rf kan nooit groter dan 1 zijn.","Dat is (6,0 − 2,4) ÷ 6,0: de afstand van vlek tot front.","Dat is het verschil in cm, geen Rf."]],
+ ["Waarom zet je de startlijn van een papierchromatogram met potlood?",["grafiet lost niet op in de loopvloeistof","potlood is beter te zien","inkt hecht niet aan papier","dan kun je de lijn uitgummen"],"Inkt bevat kleurstoffen die zelf ook mee zouden lopen. Grafiet lost niet op en blijft liggen.",[null,"Zichtbaarheid is niet de reden.","Inkt hecht juist wel; het probleem is dat de kleurstoffen in inkt meelopen.","Uitgummen is niet nodig of de bedoeling."]],
+ ["Op papier (polair) gebruik je een apolaire loopvloeistof. Welke kleurstof heeft de grootste Rf?",["de meest apolaire kleurstof","de meest polaire kleurstof","de kleurstof met de grootste molecuulmassa","alle kleurstoffen hebben dezelfde Rf"],"Een apolaire kleurstof hecht weinig aan het polaire papier en lost goed op in de apolaire loopvloeistof. Hij loopt dus het verst mee.",[null,"Een polaire kleurstof vormt waterstofbruggen met de OH-groepen van cellulose en blijft achter.","Molecuulmassa is hier niet de bepalende factor; polariteit wel.","Dan zou er niets gescheiden worden."],1],
+ ["Bij gaschromatografie hecht stof P veel sterker aan de stationaire fase dan stof Q. Wat geldt?",["P heeft een grotere retentietijd dan Q","P heeft een kleinere retentietijd dan Q","P geeft een grotere piek dan Q","P en Q hebben dezelfde retentietijd"],"Wie sterk hecht, blijft langer in de kolom en komt later bij de detector.",[null,"Andersom: sterk hechten betekent langzaam door de kolom.","De piekgrootte hangt af van de hoeveelheid, niet van de hechting.","Ze hechten verschillend, dus ze komen op verschillende tijden."]],
+ ["Je analyseert pentaan, hexaan en heptaan met GC op een apolaire kolom. Welke stof komt het eerst uit de kolom?",["pentaan","hexaan","heptaan","ze komen tegelijk"],"Pentaan heeft de kortste keten, de zwakste vanderwaalsbindingen en het laagste kookpunt (36 °C). Het is het vluchtigst en komt het eerst.",[null,"Hexaan (69 °C) komt na pentaan.","Heptaan (98 °C) heeft de sterkste vanderwaalsbindingen en komt als laatste.","Ze verschillen in kookpunt, dus ze worden gescheiden."],1],
+ ["Hoe toon je met GC het makkelijkst aan dat stof X in een mengsel zit?",["voeg wat zuivere X toe: de piek van X wordt groter en er komt geen nieuwe piek bij","kijk of er een grote piek is","verdun het mengsel","meet bij een hogere oventemperatuur"],"Dit heet een standaard toevoegen. Groeit een bestaande piek, dan heeft X dezelfde retentietijd als die stof.",[null,"Een grote piek zegt alleen dat er veel van een stof is, niet welke stof.","Verdunnen verandert de hoeveelheid, niet welke stof het is.","Dan veranderen alle retentietijden; je hebt geen vergelijking."],1],
+ ["Je filtreert zout water met zand. Wat is het filtraat?",["het zoute water","het zand","het zout","zuiver water"],"Het filtraat is alles wat door het filter gaat. Het opgeloste zout gaat mee. Het zand op het filter is het residu.",[null,"Het zand blijft op het filter: dat is het residu.","Het zout is opgelost en zit ín het filtraat, niet apart.","Het zout gaat ook door het filter: het filtraat is niet zuiver."]],
+ ["Je destilleert een mengsel van ethanol (kp 78 °C) en water (kp 100 °C). Wat zit vooral in het eerste destillaat?",["ethanol","water","evenveel van allebei","lucht"],"De stof met het laagste kookpunt verdampt het eerst. Het destillaat bevat vooral ethanol, met een beetje water.",[null,"Water heeft het hogere kookpunt en blijft langer in de kolf.","Ze verschillen in kookpunt, dus de samenstelling is niet gelijk.","Er komt eerst ethanoldamp, die in de koeler condenseert."]],
+ ["Waarom zit bij destilleren de thermometer ter hoogte van de zijbuis?",["je meet de temperatuur van de damp die naar de koeler gaat","zo gaat de thermometer niet kapot","in de vloeistof is het kouder","de vloeistof geleidt warmte slecht"],"Je wilt weten welke stof er overdestilleert. De damp bij de zijbuis heeft het kookpunt van die stof.",[null,"Dat is niet de reden.","In de kolf is het juist het warmst.","Dat is niet de reden."]],
+ ["In een gefractioneerde destillatiekolom: waar komen de stoffen met de langste koolstofketens eruit?",["onderin","bovenin","in het midden","ze verlaten de kolom als gas"],"Lange ketens hebben de sterkste vanderwaalsbindingen en het hoogste kookpunt. Ze condenseren al onderin, waar het het heetst is.",[null,"Bovenin is het koud: daar komen alleen de stoffen met de laagste kookpunten.","In het midden zitten kerosine en diesel.","Alleen de kortste ketens (C1–C4) komen als gas bovenuit."],1],
+ ["Waarom blijft een verontreiniging bij herkristalliseren in de oplossing?",["er is zo weinig van dat de oplossing er niet verzadigd aan raakt","verontreinigingen lossen altijd goed op","de verontreiniging verdampt","de verontreiniging hecht aan het filter"],"De gewenste stof is in grote hoeveelheid aanwezig en raakt bij afkoelen oververzadigd. Van de verontreiniging is te weinig om de oplossing te verzadigen.",[null,"Niet altijd; het gaat om de kleine hoeveelheid.","Er verdampt niets bij kristalliseren.","Filtreren houdt alleen vaste deeltjes tegen."],1],
+ ["Waarom was je kristallen na het filtreren met koud water en niet met warm water?",["in koud water lost minder van de kristallen op","koud water is zuiverder","warm water verdampt","koud water reageert niet"],"Je wilt alleen de moederloog aan de buitenkant wegspoelen. In koud water is de oplosbaarheid laag, dus je verliest weinig product.",[null,"Beide zijn even zuiver.","Dat is niet het probleem.","Er reageert niets."],1],
+ ["Je wilt sulfaationen uit water verwijderen. Welke oplossing voeg je toe?",["bariumnitraat-oplossing","natriumchloride-oplossing","kaliumnitraat-oplossing","glucose-oplossing"],"Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Bariumsulfaat is slecht oplosbaar (Binas 45A). Daarna filtreer je het neerslag af.",[null,"Natriumsulfaat en natriumchloride zijn allebei goed oplosbaar: er ontstaat geen neerslag.","Kalium- en nitraatzouten zijn allemaal goed oplosbaar.","Glucose levert geen ionen."],1],
+ ["Welke scheidingsmethoden gebruik je bij het zetten van filterkoffie?",["extraheren en filtreren","adsorberen en indampen","destilleren en filtreren","alleen filtreren"],"Heet water lost de smaak- en geurstoffen uit de gemalen bonen (extraheren). Het filter houdt het koffiedik tegen (filtreren).",[null,"Er hecht niets aan een oppervlak en er verdampt niets.","Er condenseert niets.","Dan vergeet je hoe de smaakstoffen in het water komen."]],
+ ["Je spoelt ruwe kristallen met een beetje koud water om vuil aan de buitenkant op te lossen. Hoe heet dit?",["wassen","adsorberen","decanteren","indampen"],"Wassen is een vorm van extraheren waarbij je juist de ongewenste stof eruit haalt. Het berust op verschil in oplosbaarheid.",[null,"Er hecht niets aan een oppervlak.","Decanteren is afschenken na bezinken.","Er verdampt niets."]],
+ ["Welke zin is het beste examenantwoord?",["Destilleren berust op het verschil in kookpunt tussen ethanol en water.","Destilleren berust op koken.","Destilleren berust op het verschil in kookpunt.","Bij destilleren verdampt de ethanol."],"Noem de methode, de stofeigenschap én tussen welke stoffen het verschil zit.",[null,"Geen stofeigenschap en geen stoffen genoemd.","Tussen welke stoffen? Dat kost vaak een punt.","Dit beschrijft wat er gebeurt, niet waar het op berust."]],
+ ["In een blokschema van de ammoniaksynthese gaan N₂ en H₂ uit S1 terug naar R1. Waarom?",["de reactie is een evenwicht: niet alles reageert in één keer","N₂ en H₂ zijn katalysatoren","zo wordt S1 gekoeld","om NH₃ terug te winnen"],"Bij een evenwicht blijft altijd een deel van de beginstoffen over. Recyclen voorkomt dat je grondstof weggooit.",[null,"Ze zijn beginstoffen, geen katalysator.","Dat is niet het doel.","NH₃ is juist het product dat eruit gaat."],1],
+ ["Water met heel fijn verdeelde klei gaat troebel door het filterpapier. Wat kun je het beste doen?",["centrifugeren","indampen","extraheren","nog een keer filtreren"],"De deeltjes zijn te klein voor het filter. Bij centrifugeren zakken ze door hun grotere dichtheid snel naar de bodem.",[null,"Dan houd je klei én opgeloste stoffen over, maar geen water.","De klei lost nergens beter in op.","Ze gaan dan opnieuw door het filter heen."]]
+];
+const OPEN=[
+ ["Leg op microniveau uit waarom hexaan geschikt is om jood uit joodwater te extraheren.","Jood (I₂) en hexaan zijn allebei apolair. Tussen I₂ en hexaan werken vanderwaalsbindingen, dus jood lost goed op in hexaan. Water is polair en vormt waterstofbruggen; I₂ kan die niet vormen en lost daarom slecht op in water. Hexaan mengt niet met water, zodat je twee lagen krijgt.",["jood en hexaan zijn (allebei) apolair / hydrofoob","jood kan geen waterstofbruggen vormen met water","hexaan mengt niet met water (twee lagen)"]],
+ ["Leg uit waarom water een hoger kookpunt heeft dan ethanol, terwijl een ethanolmolecuul zwaarder is.","Beide stoffen vormen waterstofbruggen. Een watermolecuul kan gemiddeld meer waterstofbruggen vormen (twee H-atomen aan O) dan een ethanolmolecuul (één OH-groep). Ethanol heeft wel sterkere vanderwaalsbindingen door de grotere massa, maar het effect van de extra waterstofbruggen in water is groter.",["noemt waterstofbruggen tussen de moleculen","water vormt gemiddeld meer waterstofbruggen per molecuul","noemt dat ethanol sterkere vanderwaalsbindingen heeft, maar dat dit niet opweegt"]],
+ ["Geef de scheidingsmethode en waar die op berust: je haalt koffiedik uit koffie.","Filtreren. Dit berust op het verschil in deeltjesgrootte tussen het koffiedik en (de deeltjes van) de koffie-oplossing.",["filtreren","verschil in deeltjesgrootte","noemt tussen welke stoffen: koffiedik en de oplossing"]],
+ ["Beschrijf hoe je onzuiver benzoëzuur zuivert door herkristalliseren. Geef bij elke stap kort waarom.","Los het op in zo weinig mogelijk heet water. Filtreer eventueel heet om onoplosbaar vuil te verwijderen. Laat langzaam afkoelen: de oplosbaarheid daalt en benzoëzuur kristalliseert uit, de verontreiniging blijft opgelost. Filtreer de kristallen af, was ze met een beetje koud water en laat ze drogen.",["oplossen in zo weinig mogelijk heet water","afkoelen: oplosbaarheid daalt, kristallen ontstaan","verontreiniging blijft opgelost (moederloog)","filtreren en wassen met koud water"]],
+ ["Een stof heeft op papier met water als loopvloeistof een kleine Rf-waarde. Leg uit wat dat zegt over de stof en het papier.","De stof komt niet ver, dus hij hecht sterk aan de stationaire fase (het papier) ten opzichte van het oplossen in de loopvloeistof. Cellulose heeft veel OH-groepen; de stof vormt waarschijnlijk waterstofbruggen met het papier.",["hecht sterk aan de stationaire fase / het papier","verhouding tussen hechten en oplossen in de loopvloeistof","waterstofbruggen met OH-groepen van cellulose"]],
+ ["In een fabriek koelt men een gasmengsel van N₂, H₂ en NH₃ af tot −40 °C. Leg uit welke stof vloeibaar wordt en waarom.","NH₃ wordt vloeibaar, want het kookpunt (−33 °C) ligt boven −40 °C. N₂ (−196 °C) en H₂ (−253 °C) blijven gasvormig. NH₃-moleculen vormen waterstofbruggen, N₂ en H₂ hebben alleen zwakke vanderwaalsbindingen.",["NH₃ wordt vloeibaar","vergelijkt kookpunten met −40 °C","waterstofbruggen bij NH₃ tegenover alleen vanderwaalsbindingen bij N₂ en H₂"]]
+];
+const QUIZ=[...MC.map((m,i)=>({id:"m"+i,t:"mc",q:m[0],a:m[1],ex:m[2],why:m[3],vwo:!!m[4]})),...OPEN.map((o,i)=>({id:"o"+i,t:"open",q:o[0],model:o[1],checks:o[2],vwo:true}))];
+
+/* ====================== STORAGE ====================== */
+const SKEY="scheidingsmethoden-v2";
+let ST={seen:[],best:null,wrong:[],exam:{},bs:{}};
+try{const raw=localStorage.getItem(SKEY);if(raw)ST=Object.assign(ST,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(SKEY,JSON.stringify(ST));}catch(e){}drawProg();}
+let resetArmed=false;
+function drawProg(){const el=$("#prog");if(!el)return;
+  const examMax=EXAMS.reduce((s,e)=>s+e.subs.reduce((a,x)=>a+x.p,0),0);
+  const examPts=Object.values(ST.exam).reduce((s,v)=>s+(v||0),0);
+  const bsTot=BS.reduce((s,b)=>s+Object.keys(b.S).length,0),bsN=Object.keys(ST.bs||{}).length;
+  const quizPct=ST.best?ST.best.n/ST.best.of:0;
+  const pct=v=>Math.round(Math.min(1,v)*100);
+  const card=(n,t,href,p,txt)=>`<a class="step" href="${href}"><span class="n"><em>${n}</em>${t}</span><span class="bar"><i style="width:${pct(p)}%"></i></span><small>${txt}</small></a>`;
+  el.innerHTML=card(1,"Begrijpen","#overzicht",ST.seen.length/METHODS.length,`${ST.seen.length}/${METHODS.length} animaties`)
+    +card(2,"Toepassen","#blokschema",bsN/bsTot,`${bsN}/${bsTot} blokken goed`)
+    +card(3,"Oefenen","#quiz",(quizPct+examPts/examMax)/2,`quiz ${ST.best?ST.best.n+"/"+ST.best.of:"–"} · examen ${examPts}/${examMax}p`);
+  $("#progfoot").innerHTML=`Je voortgang blijft op dit toestel bewaard${ST.wrong.length?` · nog ${ST.wrong.length} quizvragen te herhalen`:""}. <button class="${resetArmed?"sure":""}" id="resetp">${resetArmed?"Zeker weten? Tik nog een keer":"Wis voortgang"}</button>`;
+  $("#resetp").onclick=()=>{if(!resetArmed){resetArmed=true;drawProg();setTimeout(()=>{resetArmed=false;drawProg();},4000);return;}
+    resetArmed=false;ST={seen:[],best:null,wrong:[],exam:{},bs:{}};save();drawExams();drawBS();startQuiz(qMode);};}
+function markSeen(k){if(!ST.seen.includes(k)){ST.seen.push(k);save();
+  if(ST.seen.length===METHODS.length)celebrate("Alle 12 animaties bekeken. Stap 1 is klaar!");}}
+let toastT;
+function celebrate(msg){let t=$("#toast");if(!t){t=document.createElement("div");t.id="toast";t.setAttribute("role","status");document.body.appendChild(t);}
+  const cols=["--c-dye1","--c-dye2","--c-dye3","--c-eth","--c-salt","--c-flame"];
+  t.innerHTML=`<span class="burst" aria-hidden="true">${Array.from({length:14},(_,i)=>`<i style="--a:${i*360/14}deg;background:var(${cols[i%6]})"></i>`).join("")}</span><b>${msg}</b>`;
+  t.classList.remove("show");void t.offsetWidth;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),3600);}
+
+/* ====================== QUIZ ENGINE ====================== */
+let qOrder=[],qi=0,qScore=0,qAns=null,qMode="alles",qCount=0;
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pool(mode){if(mode==="vwo")return QUIZ.filter(q=>q.vwo);if(mode==="fouten")return QUIZ.filter(q=>ST.wrong.includes(q.id));if(mode==="open")return QUIZ.filter(q=>q.t==="open");return QUIZ;}
+function startQuiz(mode){qMode=mode||qMode;let p=pool(qMode);
+  if(qMode==="alles")p=shuffle(p).slice(0,15);
+  qOrder=shuffle(p).map(q=>({q,opts:shuffle([0,1,2,3])}));qi=0;qScore=0;qAns=null;qCount=0;drawQuiz();}
+function modeBar(){const ms=[["alles","Snelle ronde (15)"],["vwo","Vwo-verdieping"],["open","Open vragen"],["fouten",`Mijn fouten (${ST.wrong.length})`]];
+  return `<div class="modes" role="group" aria-label="Soort ronde">${ms.map(([k,l])=>`<button data-mode="${k}" aria-pressed="${k===qMode}">${l}</button>`).join("")}</div>`;}
+function wireModes(box){box.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>startQuiz(b.dataset.mode));}
+function recordResult(id,good){const has=ST.wrong.includes(id);if(good&&has)ST.wrong=ST.wrong.filter(x=>x!==id);if(!good&&!has)ST.wrong.push(id);save();}
+function drawQuiz(){
+  const box=$("#quizbox");
+  if(!qOrder.length){box.innerHTML=`${modeBar()}<p>${qMode==="fouten"?"Je hebt geen vragen om te herhalen. Goed bezig! Kies een andere ronde.":"Geen vragen in deze ronde."}</p>`;wireModes(box);return;}
+  if(qi>=qOrder.length){const pct=qCount?Math.round(qScore/qCount*100):0;
+    if(qCount&&qMode!=="fouten"&&(!ST.best||qScore/qCount>ST.best.n/ST.best.of)){ST.best={n:qScore,of:qCount};save();}
+    if(qCount&&pct===100)celebrate(`Foutloos: ${qScore}/${qCount}!`);else if(pct>=85)celebrate(`Sterk: ${qScore}/${qCount}`);
+    const msg=pct>=85?"Sterk! Door naar de examenvragen.":pct>=60?"Goed op weg. Herhaal je fouten en kijk de valkuilen na.":"Bekijk de animaties en de uitleg op microniveau nog eens en probeer opnieuw.";
+    box.innerHTML=`${modeBar()}<div class="qtop"><span>Klaar</span></div><p class="score">${qScore} / ${qCount}</p><p>${qCount<qOrder.length?"(open vragen tellen niet mee in de score) ":""}${msg}</p><div class="qnav"><button class="btn" id="qre">Nieuwe ronde</button>${ST.wrong.length?`<button class="btn ghost" id="qwr">Herhaal mijn fouten (${ST.wrong.length})</button>`:""}</div>`;
+    wireModes(box);$("#qre").onclick=()=>startQuiz();if($("#qwr"))$("#qwr").onclick=()=>startQuiz("fouten");return;}
+  const {q,opts}=qOrder[qi];
+  const head=`${modeBar()}<div class="qtop"><span>Vraag ${qi+1} van ${qOrder.length}${q.vwo?' · <span class="tag">vwo</span>':""}</span><span id="qsc">Score: ${qScore}</span></div><div class="pbar"><i style="width:${qi/qOrder.length*100}%"></i></div><p class="qtext">${q.q}</p>`;
+  const next=()=>{qi++;qAns=null;drawQuiz();$("#quizbox").scrollIntoView({block:"nearest"});};
+  if(q.t==="open"){
+    box.innerHTML=`${head}<div class="open"><label for="qopen" style="font-size:.9rem;color:var(--muted)">Typ je antwoord (of schrijf het op papier):</label><textarea id="qopen"></textarea></div><div class="qnav"><button class="btn" id="qshow">Vergelijk met antwoordmodel</button></div><div id="qfb"></div>`;
+    wireModes(box);
+    $("#qshow").onclick=()=>{$("#qshow").disabled=true;
+      $("#qfb").innerHTML=`<div class="expl"><b>Antwoordmodel.</b> ${q.model}</div><p style="margin-top:10px"><b>Vink aan wat in jouw antwoord stond:</b></p><ul class="checks">${q.checks.map((c,i)=>`<li><label><input type="checkbox" id="qc${i}"><span>${c}</span></label></li>`).join("")}</ul><div class="qnav" style="margin-top:10px"><button class="btn" id="qnext">${qi+1<qOrder.length?"Volgende vraag":"Bekijk je score"}</button></div>`;
+      $("#qnext").onclick=()=>{const all=[...box.querySelectorAll(".checks input")].every(i=>i.checked);recordResult(q.id,all);next();};};
+    return;}
+  box.innerHTML=`${head}<div class="answers">${opts.map(o=>`<button class="ans" data-o="${o}">${q.a[o]}</button>`).join("")}</div><div id="qfb"></div>`;
+  wireModes(box);
+  box.querySelectorAll(".ans").forEach(b=>b.onclick=()=>{
+    if(qAns!==null)return;qAns=+b.dataset.o;const good=qAns===0;qCount++;if(good)qScore++;recordResult(q.id,good);
+    box.querySelectorAll(".ans").forEach(x=>{x.disabled=true;if(+x.dataset.o===0)x.classList.add("ok");else if(x===b)x.classList.add("wrong");});
+    const why=!good&&q.why&&q.why[qAns]?`<p style="margin-top:6px"><span class="whyw">Waarom „${q.a[qAns]}” niet klopt:</span> ${q.why[qAns]}</p>`:"";
+    $("#qfb").innerHTML=`<div class="expl"><b>${good?"Goed!":"Niet helemaal."}</b> ${q.ex}${why}</div><div class="qnav" style="margin-top:10px"><button class="btn" id="qnext">${qi+1<qOrder.length?"Volgende vraag":"Bekijk je score"}</button></div>`;
+    $("#qsc").textContent="Score: "+qScore;
+    $("#qnext").onclick=next;$("#qnext").focus({preventScroll:true});
+  });
+}
+
+/* ====================== EXAM QUESTIONS ====================== */
+const EXAMS=[
+ {title:"Cafeïnevrije koffie",ctx:`<p>Bij één manier om cafeïnevrije koffie te maken worden groene, natte koffiebonen in contact gebracht met superkritisch koolstofdioxide (CO₂). Cafeïne lost goed op in dit CO₂, de meeste smaakstoffen veel minder.</p><p>Het CO₂ met de cafeïne wordt daarna door een vat met actieve kool geleid. De cafeïne blijft achter op de kool. Het CO₂ wordt opnieuw gebruikt.</p>`,
+  subs:[
+   {q:"Geef de naam van de scheidingsmethode waarmee de cafeïne uit de bonen wordt gehaald. Geef ook aan op welk verschil in stofeigenschap deze methode berust.",p:2,hint:"Het CO₂ is hier het ‘oplosmiddel’ dat één stof selectief meeneemt.",
+    rub:[["extraheren",1],["berust op verschil in oplosbaarheid (in CO₂) tussen cafeïne en de smaakstoffen",1]]},
+   {q:"Welke scheidingsmethode vindt plaats in het vat met actieve kool? Op welk verschil in stofeigenschap berust deze methode?",p:2,hint:"De cafeïne ‘plakt’ aan het oppervlak.",
+    rub:[["adsorberen",1],["berust op verschil in aanhechtingsvermogen (aan actieve kool) tussen cafeïne en CO₂",1]]},
+   {q:"Na verloop van tijd moet de actieve kool worden vervangen. Leg uit waarom.",p:1,hint:"Waar gaat de cafeïne zitten, en is daar onbeperkt plek?",
+    rub:[["het oppervlak van de kool raakt bezet (verzadigd) met cafeïne, zodat er geen cafeïne meer kan worden geadsorbeerd",1]]}
+  ]},
+ {title:"Kleurstoffen in een rood snoepje",ctx:`<p>Een leerling onderzoekt met dunnelaagchromatografie welke kleurstoffen in een rood snoepje zitten. Ze zet een vlek van de snoepkleurstof (S) op de startlijn en vergelijkt het resultaat met de Rf-waarden in de tabel. Na afloop ligt het front 7,5 cm boven de startlijn. In S ziet ze twee vlekken: op 2,1 cm en op 4,8 cm boven de startlijn.</p>
+   <table><thead><tr><th>Kleurstof</th><th>Rf (bij deze loopvloeistof)</th></tr></thead><tbody><tr><td>E122</td><td class="mono">0,28</td></tr><tr><td>E129</td><td class="mono">0,45</td></tr><tr><td>E124</td><td class="mono">0,64</td></tr></tbody></table>`,
+  subs:[
+   {q:"Bereken de Rf-waarden van beide vlekken van S en leid af welke kleurstoffen in het snoepje zitten.",p:3,hint:"Rf = afstand vlek ÷ afstand front, allebei gemeten vanaf de startlijn.",
+    calc:"Rf (vlek 1) = 2,1 ÷ 7,5 = 0,28\nRf (vlek 2) = 4,8 ÷ 7,5 = 0,64",
+    rub:[["Rf vlek 1 = 2,1 / 7,5 = 0,28",1],["Rf vlek 2 = 4,8 / 7,5 = 0,64",1],["conclusie: S bevat E122 en E124 (geen E129)",1]]},
+   {q:"Leg uit waarom de startlijn boven het niveau van de loopvloeistof moet liggen.",p:1,hint:"Wat gebeurt er met een vlek die ín de vloeistof hangt?",
+    rub:[["anders lossen de kleurstoffen op in de loopvloeistof in de bak (en lopen ze niet omhoog met het front)",1]]},
+   {q:"Welke van de drie kleurstoffen hecht het sterkst aan de stationaire fase? Licht je antwoord toe.",p:1,hint:"Wie sterk hecht, komt niet ver.",
+    rub:[["E122: heeft de kleinste Rf-waarde, dus komt het minst ver: hecht relatief het sterkst aan de stationaire fase (en lost het slechtst op in de loopvloeistof)",1]]}
+  ]},
+ {title:"Alcohol in wijn",ctx:`<p>Met gaschromatografie wordt het ethanolgehalte van een wijn bepaald. Een standaardoplossing met 5,0 g ethanol per liter geeft een piek bij een retentietijd van 2,3 minuten met een piekoppervlak van 1,25·10⁴ (willekeurige eenheden).</p><p>De wijn wordt eerst 10 keer verdund. De verdunde wijn geeft onder dezelfde omstandigheden onder andere een piek bij 2,3 minuten met een oppervlak van 2,40·10⁴. Neem aan dat het piekoppervlak recht evenredig is met de concentratie ethanol. De dichtheid van ethanol is 0,79 g/mL.</p>`,
+  subs:[
+   {q:"Leg uit hoe je weet welke piek in het chromatogram van de wijn bij ethanol hoort.",p:1,hint:"Vergelijk met de standaard.",
+    rub:[["de piek met dezelfde retentietijd (2,3 min) als de ethanolstandaard, gemeten onder dezelfde omstandigheden",1]]},
+   {q:"Bereken het ethanolgehalte van de (onverdunde) wijn in g per liter.",p:2,hint:"Eerst de verdunde wijn, dan terugrekenen met de verdunningsfactor.",
+    calc:"verdunde wijn: 2,40·10⁴ ÷ 1,25·10⁴ × 5,0 g/L = 9,6 g/L\nonverdunde wijn: 9,6 × 10 = 96 g/L  (= 9,6·10¹ g/L)",
+    rub:[["concentratie verdunde wijn: (2,40·10⁴ / 1,25·10⁴) × 5,0 = 9,6 g/L",1],["× 10 (verdunning) = 96 g/L, in twee significante cijfers",1]]},
+   {q:"Bereken het alcoholpercentage van de wijn in volumeprocent.",p:2,hint:"Reken de massa ethanol in 1 L wijn om naar een volume.",
+    calc:"volume ethanol per liter wijn = 96 g ÷ 0,79 g/mL = 121,5 mL (niet tussentijds afronden)\nvolumepercentage = 121,5 mL ÷ 1000 mL × 100% = 12 vol%",
+    rub:[["volume ethanol: 96 / 0,79 = 121,5 mL per liter wijn",1],["(121,5 / 1000) × 100% = 12 vol%",1]]}
+  ]},
+ {title:"Zand en zout",ctx:`<p>Je krijgt een mengsel van zand en keukenzout. Je wilt van beide stoffen een zuiver monster overhouden. Je mag water, een trechter met filtreerpapier, een bekerglas, een indampschaal en een brander gebruiken.</p>`,
+  subs:[
+   {q:"Beschrijf een werkwijze om zuiver zand en zuiver keukenzout te verkrijgen. Noem bij elke stap de scheidingsmethode.",p:3,hint:"Gebruik dat zout wel en zand niet oplost in water.",
+    rub:[["water toevoegen en roeren: het zout lost op, het zand niet (extraheren/oplossen; berust op verschil in oplosbaarheid in water tussen zout en zand)",1],["filtreren: het zand blijft als residu op het filter (eventueel naspoelen en drogen)",1],["het filtraat (zoutoplossing) indampen: het zout blijft achter",1]]},
+   {q:"Een klasgenoot zegt: „Je kunt het zout ook uit het filtraat halen door te destilleren.” Geef een voordeel én een nadeel van destilleren ten opzichte van indampen.",p:2,hint:"Wat gebeurt er bij beide methoden met het water?",
+    rub:[["voordeel: je vangt het water (zuiver) op / je houdt het oplosmiddel over",1],["nadeel: een ingewikkeldere opstelling / het kost meer tijd of energie (koelwater)",1]]}
+  ]},
+ {title:"Een destillatieopstelling",ctx:`<p>Mila wil aceton (kookpunt 56 °C) afscheiden uit een mengsel van aceton en water (kookpunt 100 °C). Ze bouwt een destillatieopstelling. Ze sluit het koelwater zo aan dat het bóvenaan de koeler binnenkomt en onderaan eruit stroomt. De thermometer steekt ze tot in de vloeistof in de kolf.</p>`,
+  subs:[
+   {q:"Welke stof zit vooral in het eerste destillaat? Licht toe.",p:1,hint:"Kijk naar de kookpunten.",
+    rub:[["aceton, want dat heeft het laagste kookpunt en verdampt dus het eerst",1]]},
+   {q:"Leg voor beide keuzes van Mila uit waarom ze niet goed zijn.",p:2,hint:"Waarom moet de koeler helemaal vol koud water zitten? En welke temperatuur wil je eigenlijk weten?",
+    rub:[["koelwater moet onderin binnenkomen: dan is de koeler helemaal gevuld met water (en stroomt het tegen de damp in), zodat de damp goed condenseert",1],["de thermometer hoort ter hoogte van de zijbuis: je wilt de temperatuur meten van de damp die naar de koeler gaat (het kookpunt van de stof die overdestilleert)",1]]}
+  ]},
+ {title:"Bio-ethanol uit glucose",vwo:1,ctx:`<p>Bio-ethanol wordt gemaakt door glucose te laten vergisten met gist. In reactor R1 treedt de volgende reactie op:</p><p class="mono">C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂</p><p>Het mengsel uit R1 (ethanol, water, opgeloste stoffen en gistcellen) gaat naar scheidingsruimte S1. Daar worden de gistcellen verwijderd en teruggevoerd naar R1. De vloeistof uit S1 gaat naar S2, waar de ethanol van het water wordt gescheiden.</p>`,
+  subs:[
+   {q:"Geef voor S1 en S2 een geschikte scheidingsmethode. Geef bij elke methode aan op welk verschil in stofeigenschap die berust.",p:3,hint:"Gistcellen zijn vaste deeltjes. Ethanol en water mengen volledig.",
+    rub:[["S1: filtreren (berust op verschil in deeltjesgrootte) of centrifugeren (verschil in dichtheid)",1],["S2: destilleren",1],["berust op verschil in kookpunt tussen ethanol en water",1]]},
+   {q:"Leg op microniveau uit waarom bij de destillatie in S2 vooral ethanol als eerste overgaat.",p:2,hint:"Welke bindingen zitten tussen de moleculen, en hoeveel per molecuul?",
+    rub:[["tussen zowel ethanol- als watermoleculen zitten waterstofbruggen (en vanderwaalsbindingen)",1],["watermoleculen vormen gemiddeld meer waterstofbruggen, dus de bindingen tussen watermoleculen zijn sterker: water heeft het hogere kookpunt en ethanol verdampt eerst",1]]},
+   {q:"Bereken hoeveel gram ethanol maximaal kan ontstaan uit 1,0 kg glucose.",p:3,hint:"Reken via mol: M(glucose) = 180,2 g/mol, M(ethanol) = 46,07 g/mol, molverhouding 1 : 2.",
+    calc:"n(glucose) = 1,0·10³ g ÷ 180,2 g/mol = 5,55 mol\nn(ethanol) = 2 × 5,55 = 11,1 mol\nm(ethanol) = 11,1 mol × 46,07 g/mol = 5,1·10² g",
+    rub:[["omrekening glucose naar mol: 1,0·10³ / 180,2 = 5,55 mol",1],["molverhouding glucose : ethanol = 1 : 2",1],["omrekening naar gram: 5,1·10² g (twee significante cijfers)",1]]}
+  ]},
+ {title:"Ammoniak scheiden en recyclen",vwo:1,ctx:`<p>Bij de productie van ammoniak reageren stikstof en waterstof in reactor R1: N₂ + 3 H₂ ⇄ 2 NH₃. Het gasmengsel uit R1 wordt in S1 afgekoeld tot −40 °C. Daarbij wordt ammoniak vloeibaar. De overgebleven gassen worden teruggevoerd naar R1.</p>
+   <table><thead><tr><th>Stof</th><th>Kookpunt (°C)</th></tr></thead><tbody><tr><td>N₂</td><td class="mono">−196</td></tr><tr><td>H₂</td><td class="mono">−253</td></tr><tr><td>NH₃</td><td class="mono">−33</td></tr></tbody></table>`,
+  subs:[
+   {q:"Geef aan op welk verschil in stofeigenschap de scheiding in S1 berust, en leg met de tabel uit waarom alleen ammoniak vloeibaar wordt.",p:2,hint:"Vergelijk −40 °C met elk kookpunt.",
+    rub:[["berust op verschil in kookpunt tussen ammoniak en stikstof/waterstof",1],["alleen het kookpunt van NH₃ (−33 °C) ligt boven −40 °C; N₂ en H₂ blijven gasvormig",1]]},
+   {q:"Leg op microniveau uit waarom ammoniak een veel hoger kookpunt heeft dan stikstof en waterstof.",p:2,hint:"Welke molecuul heeft N–H-bindingen?",
+    rub:[["NH₃-moleculen vormen onderling waterstofbruggen (N–H-groepen)",1],["tussen N₂- en H₂-moleculen zitten alleen (zwakke) vanderwaalsbindingen",1]]},
+   {q:"Geef de reden dat er een recyclestroom van S1 naar R1 is. Geef ook welke stoffen in die stroom zitten.",p:2,hint:"Is de reactie aflopend?",
+    rub:[["de reactie is een evenwicht: niet alle N₂ en H₂ wordt omgezet",1],["de recyclestroom bevat N₂ en H₂ (eventueel een beetje NH₃)",1]]}
+  ]},
+ {title:"Herkristalliseren van benzoëzuur",vwo:1,ctx:`<p>Een leerling heeft 5,0 g onzuiver benzoëzuur. Daarin zit 0,20 g van een verontreiniging die goed oplost in water. Ze wil het benzoëzuur zuiveren door herkristalliseren uit water. Gegeven (afgeronde waarden voor deze opgave):</p>
+   <table><thead><tr><th>Temperatuur</th><th>Oplosbaarheid benzoëzuur</th></tr></thead><tbody><tr><td>95 °C</td><td class="mono">5,9 g per 100 g water</td></tr><tr><td>20 °C</td><td class="mono">0,29 g per 100 g water</td></tr></tbody></table>`,
+  subs:[
+   {q:"Bereken hoeveel gram water van 95 °C ze minimaal nodig heeft om al het benzoëzuur op te lossen.",p:2,hint:"Hoeveel gram benzoëzuur zit er echt in de 5,0 g?",
+    calc:"m(benzoëzuur) = 5,0 − 0,20 = 4,8 g\nm(water) = 4,8 ÷ 5,9 × 100 = 81 g",
+    rub:[["massa benzoëzuur = 4,8 g",1],["4,8 / 5,9 × 100 = 81 g water",1]]},
+   {q:"Ze koelt de oplossing af tot 20 °C en filtreert. Bereken het maximale rendement van het herkristalliseren in procenten.",p:3,hint:"Hoeveel benzoëzuur blijft er bij 20 °C opgelost in die 81 g water?",
+    calc:"opgelost bij 20 °C = 0,29 × 81 ÷ 100 = 0,24 g\nkristallen = 4,8 − 0,24 = 4,56 g\nrendement = 4,56 ÷ 4,8 × 100% = 95%",
+    rub:[["opgelost bij 20 °C: 0,29 × 0,81 = 0,24 g",1],["massa kristallen: 4,8 − 0,24 = 4,6 g",1],["rendement = 4,56 / 4,8 × 100% = 95%",1]]},
+   {q:"Leg uit waarom de verontreiniging na afkoelen in de oplossing blijft.",p:1,hint:"Hoeveel verontreiniging zit er in hoeveel water?",
+    rub:[["van de verontreiniging is maar 0,20 g aanwezig en die lost goed op: de oplossing raakt er niet verzadigd aan, dus die kristalliseert niet uit",1]]},
+   {q:"Leg uit waarom ze zo weinig mogelijk heet water moet gebruiken.",p:1,hint:"Wat gebeurt er met het rendement als je 200 g water gebruikt?",
+    rub:[["hoe meer water, hoe meer benzoëzuur bij 20 °C opgelost blijft, dus hoe lager het rendement",1]]}
+  ]},
+ {title:"Sulfaat uit water verwijderen",vwo:1,ctx:`<p>Een bedrijf wil sulfaationen uit afvalwater verwijderen. Daarvoor wordt een oplossing van bariumchloride toegevoegd. Er ontstaat een witte, troebele vaste stof. Daarna wordt het mengsel gescheiden.</p>`,
+  subs:[
+   {q:"Geef de vergelijking van de reactie die optreedt. Gebruik toestandsaanduidingen.",p:2,hint:"Zoek in de oplosbaarheidstabel (Binas 45A) welk zout slecht oplosbaar is.",
+    rub:[["Ba²⁺ en SO₄²⁻ voor de pijl, BaSO₄ na de pijl",1],["juiste toestandsaanduidingen: Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)",1]]},
+   {q:"Geef een geschikte scheidingsmethode voor het mengsel dat ontstaat, en waar die op berust.",p:2,hint:"Het neerslag bestaat uit vaste deeltjes.",
+    rub:[["filtreren (of bezinken en decanteren / centrifugeren)",1],["berust op verschil in deeltjesgrootte (bij filtreren) of dichtheid (bij bezinken/centrifugeren) tussen bariumsulfaat en de oplossing",1]]},
+   {q:"Leg uit waarom je de sulfaationen niet direct uit het afvalwater kunt filtreren.",p:1,hint:"Hoe groot is een opgelost ion vergeleken met de poriën van een filter?",
+    rub:[["sulfaationen zijn opgelost (gehydrateerd) en veel kleiner dan de poriën van het filter: ze gaan erdoor",1]]}
+  ]},
+ {title:"Alkanen in een gaschromatogram",vwo:1,ctx:`<p>Een mengsel van pentaan, hexaan en heptaan wordt geanalyseerd met gaschromatografie. De kolom bevat een apolaire stationaire fase. Het chromatogram heeft drie pieken, bij 1,8 min, 3,1 min en 5,4 min.</p>`,
+  subs:[
+   {q:"Leg uit welke piek bij heptaan hoort.",p:2,hint:"Langere keten → ? bindingen → ? kookpunt.",
+    rub:[["heptaan heeft de langste keten en dus de sterkste vanderwaalsbindingen / het hoogste kookpunt",1],["daardoor komt het als laatste uit de kolom: de piek bij 5,4 min",1]]},
+   {q:"Een leerling wil zeker weten dat de piek bij 3,1 min van hexaan is. Beschrijf een proef waarmee dit kan.",p:2,hint:"Wat gebeurt er met het chromatogram als je zuivere hexaan aan het monster toevoegt?",
+    rub:[["voeg (een beetje) zuivere hexaan toe aan het monster en meet opnieuw onder dezelfde omstandigheden",1],["als de piek bij 3,1 min groter wordt en er geen nieuwe piek bijkomt, is het hexaan",1]]},
+   {q:"De piek van hexaan heeft een twee keer zo groot oppervlak als de piek van pentaan. Leg uit of je hieruit mag concluderen dat er twee keer zoveel hexaan als pentaan in het mengsel zit.",p:1,hint:"Geeft elke stof per gram even veel signaal in de detector?",
+    rub:[["nee, niet zonder meer: elke stof geeft per hoeveelheid een ander signaal; je moet eerst ijken met standaarden van elke stof",1]]}
+  ]}
+
+];
+function drawExams(){
+  $("#exams").innerHTML=EXAMS.map((e,ei)=>{const max=e.subs.reduce((s,x)=>s+x.p,0);
+   return `<details class="exam" data-e="${ei}" data-max="${max}"><summary><span class="exn">${ei+1}</span><h3>${e.title}${e.vwo?' <span class="tag">vwo</span>':""}</h3><span class="tot"><b data-tot>0</b>/${max}p</span><i class="chev" aria-hidden="true"></i></summary><div class="ctx">${e.ctx}</div>
+   ${e.subs.map((s,si)=>`<div class="sub"><div class="qq"><span class="pt">${s.p}p</span><p><b>${ei+1}${String.fromCharCode(97+si)}</b> ${s.q}</p></div>
+     <details><summary>Hint</summary><div class="body"><p>${s.hint}</p></div></details>
+     <details><summary>Antwoordmodel</summary><div class="body">${s.calc?`<div class="calc">${s.calc}</div>`:""}
+       <ul class="rubric">${s.rub.map((r,ri)=>`<li><label><input type="checkbox" data-p="${r[1]}" id="e${ei}s${si}r${ri}" ${ST.exam["e"+ei+"s"+si+"r"+ri]?"checked":""}><span>${r[0]}</span><span class="p">${r[1]}p</span></label></li>`).join("")}</ul>
+       <p style="color:var(--muted);font-size:.9rem">Vink aan wat jij goed had. Dit wordt op dit toestel bewaard.</p></div></details></div>`).join("")}
+   </details>`;}).join("");
+  const tot=a=>{let s=0;a.querySelectorAll("input:checked").forEach(i=>s+=+i.dataset.p);a.querySelector("[data-tot]").textContent=s;const full=s===+a.dataset.max;a.classList.toggle("full",full);return full;};
+  document.querySelectorAll(".exam").forEach(a=>{tot(a);a.addEventListener("change",e=>{const i=e.target;if(i.id){if(i.checked)ST.exam[i.id]=+i.dataset.p;else delete ST.exam[i.id];save();}
+    const was=a.classList.contains("full");if(tot(a)&&!was)celebrate(`Volle score op vraag ${+a.dataset.e+1}!`);});});
+}
+
+/* ====================== NAV HIGHLIGHT + HASH ====================== */
+let navObs;
+function initNav2(){
+  const links=[...document.querySelectorAll(".nav a,.tabbar a")];
+  navObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id));});},{rootMargin:"-40% 0px -55% 0px"});
+  [...new Set(links.map(a=>a.getAttribute("href")))].forEach(h=>{const s=document.querySelector(h);if(s)navObs.observe(s);});
+  window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(METHODS.some(m=>m.key===h)&&h!==cur.key)selectMethod(h,{scroll:true});});
+}
+
+if(matchMedia("(max-width:640px)").matches)$("#tblwrap").open=false;
+initOverview();drawTree();drawBS();startQuiz();drawExams();initNav2();drawProg();
+const boot=()=>{initLab();const h=location.hash.slice(1);if(METHODS.some(m=>m.key===h))setTimeout(()=>$("#werking").scrollIntoView(),50);};
+Promise.race([document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(),new Promise(r=>setTimeout(r,1500))]).then(boot,boot);
+</script>
+
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script>
+</body>
+</html>
